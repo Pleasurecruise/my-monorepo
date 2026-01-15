@@ -1,0 +1,12 @@
+{
+  "extends": "@my-monorepo/tsconfig/tanstack.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./*"],
+      "@my-monorepo/ui/*": ["../../packages/ui/src/*"]
+    }
+  },
+  "include": ["src", "vite.config.ts"],
+  "exclude": ["node_modules"]
+}

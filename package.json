@@ -6,7 +6,12 @@
     "apps/*"
   ],
   "scripts": {
-    "build": "turbo build"
+    "dev:web": "turbo dev --filter=@my-monorepo/web",
+    "build": "turbo build",
+    "lint": "turbo lint && manypkg check",
+    "check-types": "turbo check-types",
+    "format": "biome format --write .",
+    "format:check": "biome format ."
   },
   "devDependencies": {
     "@biomejs/biome": "latest",
