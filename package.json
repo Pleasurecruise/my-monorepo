@@ -1,0 +1,18 @@
+{
+  "name": "my-monorepo",
+  "private": true,
+  "workspaces": [
+    "packages/*",
+    "apps/*"
+  ],
+  "scripts": {
+    "build": "turbo build"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "latest",
+    "@manypkg/cli": "latest",
+    "turbo": "latest",
+    "typescript": "latest"
+  },
+  "packageManager": "bun@1.3.6"
+}
