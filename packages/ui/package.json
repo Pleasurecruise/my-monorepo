@@ -25,6 +25,8 @@
 		"tailwind-merge": "^3.4.0"
 	},
 	"devDependencies": {
-		"@my-monorepo/tsconfig": "*"
+		"@my-monorepo/tsconfig": "*",
+		"@types/react": "^19.2.8",
+		"tailwindcss": "^4.1.18"
 	}
 }
