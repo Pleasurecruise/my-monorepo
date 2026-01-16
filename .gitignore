@@ -45,3 +45,7 @@ dist/
 # tanstack start
 .tanstack
 .output
+
+# tauri
+**/src-tauri/target/
+**/src-tauri/gen/
