@@ -6,6 +6,7 @@
 		"apps/*"
 	],
 	"scripts": {
+		"dev:api": "turbo dev --filter=@my-monorepo/api",
 		"dev:web": "turbo dev --filter=@my-monorepo/web",
 		"dev:tauri": "turbo dev --filter=@my-monorepo/tauri",
 		"dev:mobile": "turbo dev --filter=@my-monorepo/mobile",

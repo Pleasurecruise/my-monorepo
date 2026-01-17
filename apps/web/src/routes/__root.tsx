@@ -3,13 +3,18 @@
 import type { ReactNode } from "react";
 import {
 	Outlet,
-	createRootRoute,
+	createRootRouteWithContext,
 	HeadContent,
 	Scripts,
 } from "@tanstack/react-router";
+import { QueryClientProvider, type QueryClient } from "@tanstack/react-query";
 import appCss from "@my-monorepo/ui/styles/globals.css?url";
 
-export const Route = createRootRoute({
+export interface RouterContext {
+	queryClient: QueryClient;
+}
+
+export const Route = createRootRouteWithContext<RouterContext>()({
 	head: () => ({
 		meta: [
 			{
@@ -29,10 +34,13 @@ export const Route = createRootRoute({
 });
 
 function RootComponent() {
+	const { queryClient } = Route.useRouteContext();
 	return (
-		<RootDocument>
-			<Outlet />
-		</RootDocument>
+		<QueryClientProvider client={queryClient}>
+			<RootDocument>
+				<Outlet />
+			</RootDocument>
+		</QueryClientProvider>
 	);
 }
 

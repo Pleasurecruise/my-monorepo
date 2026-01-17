@@ -1,11 +1,12 @@
 {
-	"name": "@my-monorepo/tauri",
-	"private": true,
+	"name": "@my-monorepo/api",
 	"version": "1.0.0",
+	"private": true,
 	"type": "module",
 	"scripts": {
-		"dev": "tauri dev",
-		"build": "tauri build",
+		"dev": "bun run --hot src/index.ts",
+		"build": "bun build src/index.ts --outdir=dist --target=bun",
+		"start": "bun run dist/index.js",
 		"check-types": "tsc --noEmit",
 		"lint": "oxlint .",
 		"lint:fix": "oxlint --fix .",
@@ -15,16 +16,14 @@
 		"test:coverage": "vitest run --coverage"
 	},
 	"dependencies": {
-		"@my-monorepo/ui": "*",
-		"@tanstack/react-query": "latest",
-		"@tauri-apps/api": "latest",
-		"@tauri-apps/plugin-opener": "latest",
-		"@trpc/client": "latest",
-		"@trpc/tanstack-react-query": "latest",
-		"superjson": "latest"
+		"@hono/trpc-server": "latest",
+		"@trpc/server": "latest",
+		"hono": "latest",
+		"superjson": "latest",
+		"zod": "latest"
 	},
 	"devDependencies": {
 		"@my-monorepo/tsconfig": "*",
-		"@tauri-apps/cli": "latest"
+		"@types/node": "latest"
 	}
 }

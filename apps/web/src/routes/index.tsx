@@ -2,7 +2,9 @@
 import * as fs from "node:fs";
 import { createFileRoute, useRouter } from "@tanstack/react-router";
 import { createServerFn } from "@tanstack/react-start";
+import { useQuery } from "@tanstack/react-query";
 import { Button } from "@my-monorepo/ui/components/button";
+import { trpc } from "@/src/lib/trpc";
 
 const filePath = "count.txt";
 
@@ -35,16 +37,27 @@ function Home() {
 	const router = useRouter();
 	const state = Route.useLoaderData();
 
+	const { data: helloData, isLoading } = useQuery(
+		trpc.hello.greet.queryOptions(),
+	);
+
 	return (
-		<Button
-			type="button"
-			onClick={() => {
-				updateCount({ data: 1 }).then(() => {
-					router.invalidate();
-				});
-			}}
-		>
-			Add 1 to {state}?
-		</Button>
+		<div className="flex flex-col gap-4 p-4">
+			<div className="p-4 border rounded">
+				<h2 className="text-lg font-bold mb-2">tRPC Test</h2>
+				{isLoading ? <p>Loading...</p> : <p>{helloData?.message}</p>}
+			</div>
+
+			<Button
+				type="button"
+				onClick={() => {
+					updateCount({ data: 1 }).then(() => {
+						router.invalidate();
+					});
+				}}
+			>
+				Add 1 to {state}?
+			</Button>
+		</div>
 	);
 }
