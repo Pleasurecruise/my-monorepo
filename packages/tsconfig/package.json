@@ -4,10 +4,8 @@
 	"version": "1.0.0",
 	"files": [
 		"base.json",
-		"nextjs.json",
-		"react-library.json",
+		"hono.json",
 		"react-app.json",
-		"tanstack.json",
-		"tauri.json"
+		"react-library.json"
 	]
 }

@@ -1,5 +1,5 @@
 {
-	"extends": "@my-monorepo/tsconfig/tauri.json",
+	"extends": "@my-monorepo/tsconfig/react-app.json",
 	"compilerOptions": {
 		"baseUrl": ".",
 		"paths": {
