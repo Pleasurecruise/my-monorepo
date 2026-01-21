@@ -2,19 +2,43 @@ import { useState } from "react";
 import { View, Text, Pressable, StyleSheet } from "react-native";
 import { useQuery } from "@tanstack/react-query";
 import { trpc } from "@/lib/trpc";
+import { setLanguage } from "@/lib/i18n";
+import { useTranslation, getCurrentLanguage } from "@my-monorepo/i18n";
 
 export default function Home() {
 	const [count, setCount] = useState(0);
+	const { t } = useTranslation();
 	const { data: helloData, isLoading } = useQuery(
 		trpc.hello.greet.queryOptions(),
 	);
 
+	const toggleLanguage = () => {
+		const current = getCurrentLanguage();
+		setLanguage(current === "en" ? "zh" : "en");
+	};
+
 	return (
 		<View style={styles.container}>
 			<View style={styles.card}>
+				<Text style={styles.cardTitle}>i18n Test</Text>
+				<Text style={styles.cardText}>{t("common.welcome")}</Text>
+				<Pressable
+					style={({ pressed }) => [
+						styles.button,
+						pressed && styles.buttonPressed,
+					]}
+					onPress={toggleLanguage}
+				>
+					<Text style={styles.buttonText}>
+						{t("settings.language")}: {getCurrentLanguage().toUpperCase()}
+					</Text>
+				</Pressable>
+			</View>
+
+			<View style={styles.card}>
 				<Text style={styles.cardTitle}>tRPC Test</Text>
 				{isLoading ? (
-					<Text style={styles.cardText}>Loading...</Text>
+					<Text style={styles.cardText}>{t("common.loading")}</Text>
 				) : (
 					<Text style={styles.cardText}>{helloData?.message}</Text>
 				)}

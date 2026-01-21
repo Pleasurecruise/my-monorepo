@@ -15,6 +15,7 @@
 		"test:coverage": "vitest run --coverage"
 	},
 	"dependencies": {
+		"@my-monorepo/i18n": "*",
 		"@my-monorepo/ui": "*",
 		"@tanstack/react-query": "latest",
 		"@tauri-apps/api": "latest",

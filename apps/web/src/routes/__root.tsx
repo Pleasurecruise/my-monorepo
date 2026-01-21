@@ -6,9 +6,11 @@ import {
 	createRootRouteWithContext,
 	HeadContent,
 	Scripts,
+	Navigate,
 } from "@tanstack/react-router";
 import { QueryClientProvider, type QueryClient } from "@tanstack/react-query";
 import appCss from "@my-monorepo/ui/styles/globals.css?url";
+import { getCurrentLanguage } from "@my-monorepo/i18n";
 
 export interface RouterContext {
 	queryClient: QueryClient;
@@ -31,6 +33,9 @@ export const Route = createRootRouteWithContext<RouterContext>()({
 		links: [{ rel: "stylesheet", href: appCss }],
 	}),
 	component: RootComponent,
+	notFoundComponent: () => (
+		<Navigate to="/{-$locale}" params={{ locale: "en" }} />
+	),
 });
 
 function RootComponent() {
@@ -45,8 +50,9 @@ function RootComponent() {
 }
 
 function RootDocument({ children }: Readonly<{ children: ReactNode }>) {
+	const lang = getCurrentLanguage();
 	return (
-		<html lang="en">
+		<html lang={lang}>
 			<head>
 				<HeadContent />
 			</head>

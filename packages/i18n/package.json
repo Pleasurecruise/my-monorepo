@@ -1,0 +1,26 @@
+{
+	"name": "@my-monorepo/i18n",
+	"version": "1.0.0",
+	"private": true,
+	"type": "module",
+	"exports": {
+		".": "./src/index.ts",
+		"./locales/*": "./src/locales/*.ts"
+	},
+	"scripts": {
+		"lint": "oxlint .",
+		"lint:fix": "oxlint --fix .",
+		"format": "biome format --write .",
+		"format:check": "biome format .",
+		"check-types": "tsc --noEmit",
+		"test": "vitest run",
+		"test:coverage": "vitest run --coverage"
+	},
+	"dependencies": {
+		"i18next": "latest",
+		"react-i18next": "latest"
+	},
+	"devDependencies": {
+		"@my-monorepo/tsconfig": "*"
+	}
+}

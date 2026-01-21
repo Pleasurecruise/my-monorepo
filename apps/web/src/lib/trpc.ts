@@ -9,7 +9,7 @@ const queryClient = createQueryClient();
 const trpcClient = createTRPCClient<AppRouter>({
 	links: [
 		httpBatchLink({
-			url: "http://localhost:3001/trpc",
+			url: "http://localhost:5173/trpc",
 			transformer: superjson,
 		}),
 	],

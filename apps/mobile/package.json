@@ -21,11 +21,13 @@
 		"ios": "expo run:ios"
 	},
 	"dependencies": {
+		"@my-monorepo/i18n": "*",
 		"@tanstack/react-query": "latest",
 		"@trpc/client": "latest",
 		"@trpc/tanstack-react-query": "latest",
 		"expo": "latest",
 		"expo-linking": "latest",
+		"expo-localization": "latest",
 		"expo-router": "latest",
 		"react": "19.1.0",
 		"react-native": "0.81.5",

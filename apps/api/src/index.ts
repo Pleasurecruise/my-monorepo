@@ -30,7 +30,7 @@ app.get("/", (c) => {
 	return c.json({ message: "tRPC API Server" });
 });
 
-const port = Number(process.env.PORT) || 3001;
+const port = Number(process.env.PORT) || 5173;
 
 console.log(`Server running on http://localhost:${port}`);
 
