@@ -16,6 +16,7 @@
 	},
 	"dependencies": {
 		"@my-monorepo/i18n": "*",
+		"@my-monorepo/theme": "*",
 		"@my-monorepo/ui": "*",
 		"@tanstack/react-query": "latest",
 		"@tauri-apps/api": "latest",
@@ -25,6 +26,7 @@
 		"superjson": "latest"
 	},
 	"devDependencies": {
+		"@my-monorepo/api": "*",
 		"@my-monorepo/tsconfig": "*",
 		"@tauri-apps/cli": "latest"
 	}

@@ -9,8 +9,6 @@ const queryClient = createQueryClient();
 const trpcClient = createTRPCClient<AppRouter>({
 	links: [
 		httpBatchLink({
-			// Use your local IP for mobile development
-			// e.g., "http://192.168.1.100:5173/trpc"
 			url: "http://localhost:5173/trpc",
 			transformer: superjson,
 		}),

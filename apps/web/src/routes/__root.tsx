@@ -9,6 +9,7 @@ import {
 	Navigate,
 } from "@tanstack/react-router";
 import { QueryClientProvider, type QueryClient } from "@tanstack/react-query";
+import { ThemeProvider } from "@my-monorepo/theme";
 import appCss from "@my-monorepo/ui/styles/globals.css?url";
 import { getCurrentLanguage } from "@my-monorepo/i18n";
 
@@ -42,9 +43,11 @@ function RootComponent() {
 	const { queryClient } = Route.useRouteContext();
 	return (
 		<QueryClientProvider client={queryClient}>
-			<RootDocument>
-				<Outlet />
-			</RootDocument>
+			<ThemeProvider>
+				<RootDocument>
+					<Outlet />
+				</RootDocument>
+			</ThemeProvider>
 		</QueryClientProvider>
 	);
 }

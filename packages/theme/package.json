@@ -1,13 +1,10 @@
 {
-	"name": "@my-monorepo/i18n",
+	"name": "@my-monorepo/theme",
 	"version": "1.0.0",
 	"private": true,
 	"type": "module",
 	"exports": {
-		".": "./src/index.ts",
-		"./core": "./src/core.ts",
-		"./react": "./src/react.ts",
-		"./locales/*": "./src/locales/*.ts"
+		".": "./src/index.ts"
 	},
 	"scripts": {
 		"lint": "oxlint .",
@@ -17,9 +14,6 @@
 		"check-types": "tsc --noEmit",
 		"test": "vitest run",
 		"test:coverage": "vitest run --coverage"
-	},
-	"dependencies": {
-		"i18next": "^23.16.8"
 	},
 	"devDependencies": {
 		"@my-monorepo/tsconfig": "*"
