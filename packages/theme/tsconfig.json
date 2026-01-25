@@ -5,7 +5,7 @@
 		"moduleResolution": "Bundler",
 		"baseUrl": ".",
 		"paths": {
-			"@my-monorepo/theme/*": ["./src/*"]
+			"@/*": ["./src/*"]
 		}
 	},
 	"include": ["src/**/*"],
