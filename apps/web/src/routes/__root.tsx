@@ -34,9 +34,7 @@ export const Route = createRootRouteWithContext<RouterContext>()({
 		links: [{ rel: "stylesheet", href: appCss }],
 	}),
 	component: RootComponent,
-	notFoundComponent: () => (
-		<Navigate to="/{-$locale}" params={{ locale: "en" }} />
-	),
+	notFoundComponent: () => <Navigate to="/{-$locale}" params={{ locale: "en" }} />,
 });
 
 function RootComponent() {

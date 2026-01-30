@@ -48,10 +48,7 @@ export const isIPv6 = (value: string): boolean => {
 /**
  * URL validation
  */
-export const isURL = (
-	value: string,
-	options?: validator.IsURLOptions,
-): boolean => {
+export const isURL = (value: string, options?: validator.IsURLOptions): boolean => {
 	return validator.isURL(value, options);
 };
 
@@ -65,20 +62,14 @@ export const isUUID = (value: string, version?: 1 | 2 | 3 | 4 | 5): boolean => {
 /**
  * Identity card validation (China mainland by default)
  */
-export const isIdentityCard = (
-	value: string,
-	locale?: validator.IdentityCardLocale,
-): boolean => {
+export const isIdentityCard = (value: string, locale?: validator.IdentityCardLocale): boolean => {
 	return validator.isIdentityCard(value, locale ?? "zh-CN");
 };
 
 /**
  * Postal code validation
  */
-export const isPostalCode = (
-	value: string,
-	locale: validator.PostalCodeLocale,
-): boolean => {
+export const isPostalCode = (value: string, locale: validator.PostalCodeLocale): boolean => {
 	return validator.isPostalCode(value, locale);
 };
 
@@ -109,10 +100,7 @@ export const isStrongPassword = (
 /**
  * Date string validation
  */
-export const isDate = (
-	value: string,
-	options?: validator.IsDateOptions,
-): boolean => {
+export const isDate = (value: string, options?: validator.IsDateOptions): boolean => {
 	return validator.isDate(value, options);
 };
 
@@ -126,20 +114,14 @@ export const isNumeric = (value: string): boolean => {
 /**
  * Integer validation
  */
-export const isInt = (
-	value: string,
-	options?: validator.IsIntOptions,
-): boolean => {
+export const isInt = (value: string, options?: validator.IsIntOptions): boolean => {
 	return Boolean(validator.isInt(value, options));
 };
 
 /**
  * Float validation
  */
-export const isFloat = (
-	value: string,
-	options?: validator.IsFloatOptions,
-): boolean => {
+export const isFloat = (value: string, options?: validator.IsFloatOptions): boolean => {
 	return validator.isFloat(value, options);
 };
 

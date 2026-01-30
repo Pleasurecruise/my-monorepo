@@ -8,9 +8,7 @@ import { useTranslation, getCurrentLanguage } from "@my-monorepo/i18n";
 function App() {
 	const { t } = useTranslation();
 	const { theme, setTheme } = useTheme();
-	const { data: helloData, isLoading } = useQuery(
-		trpc.hello.greet.queryOptions(),
-	);
+	const { data: helloData, isLoading } = useQuery(trpc.hello.greet.queryOptions());
 
 	const toggleLanguage = () => {
 		const current = getCurrentLanguage();

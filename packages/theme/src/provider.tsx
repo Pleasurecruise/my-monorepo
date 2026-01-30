@@ -1,10 +1,4 @@
-import {
-	createContext,
-	useContext,
-	useEffect,
-	useState,
-	type ReactNode,
-} from "react";
+import { createContext, useContext, useEffect, useState, type ReactNode } from "react";
 import type { Theme } from "./types";
 import {
 	getTheme,
@@ -56,9 +50,7 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
 
 	const value: ThemeContextValue = { theme, setTheme: handleSetTheme };
 
-	return (
-		<ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>
-	);
+	return <ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>;
 }
 
 export function useTheme(): ThemeContextValue {

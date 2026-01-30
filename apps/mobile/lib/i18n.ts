@@ -1,10 +1,5 @@
 import { useState, useEffect } from "react";
-import {
-	i18n,
-	changeLanguage,
-	getCurrentLanguage,
-	t as translate,
-} from "@my-monorepo/i18n/core";
+import { i18n, changeLanguage, getCurrentLanguage, t as translate } from "@my-monorepo/i18n/core";
 import type { SupportedLanguage, TranslationKey } from "@my-monorepo/i18n/core";
 import { getLocales } from "expo-localization";
 

@@ -1,10 +1,4 @@
-import {
-	View,
-	Text,
-	Pressable,
-	StyleSheet,
-	useColorScheme,
-} from "react-native";
+import { View, Text, Pressable, StyleSheet, useColorScheme } from "react-native";
 import { useQuery } from "@tanstack/react-query";
 import { trpc } from "@/lib/trpc";
 import { setLanguage, useTranslation, getCurrentLanguage } from "@/lib/i18n";
@@ -14,14 +8,9 @@ export default function Home() {
 	const { t } = useTranslation();
 	const { theme, setTheme } = useTheme();
 	const systemColorScheme = useColorScheme();
-	const {
-		data: helloData,
-		isLoading,
-		isError,
-	} = useQuery(trpc.hello.greet.queryOptions());
+	const { data: helloData, isLoading, isError } = useQuery(trpc.hello.greet.queryOptions());
 
-	const isDark =
-		theme === "system" ? systemColorScheme === "dark" : theme === "dark";
+	const isDark = theme === "system" ? systemColorScheme === "dark" : theme === "dark";
 
 	const toggleLanguage = () => {
 		const current = getCurrentLanguage();
@@ -31,17 +20,10 @@ export default function Home() {
 	return (
 		<View style={[styles.container, isDark && styles.containerDark]}>
 			<View style={[styles.card, isDark && styles.cardDark]}>
-				<Text style={[styles.cardTitle, isDark && styles.textDark]}>
-					i18n Test
-				</Text>
-				<Text style={[styles.cardText, isDark && styles.textDark]}>
-					{t("common.welcome")}
-				</Text>
+				<Text style={[styles.cardTitle, isDark && styles.textDark]}>i18n Test</Text>
+				<Text style={[styles.cardText, isDark && styles.textDark]}>{t("common.welcome")}</Text>
 				<Pressable
-					style={({ pressed }) => [
-						styles.button,
-						pressed && styles.buttonPressed,
-					]}
+					style={({ pressed }) => [styles.button, pressed && styles.buttonPressed]}
 					onPress={toggleLanguage}
 				>
 					<Text style={styles.buttonText}>
@@ -51,9 +33,7 @@ export default function Home() {
 			</View>
 
 			<View style={[styles.card, isDark && styles.cardDark]}>
-				<Text style={[styles.cardTitle, isDark && styles.textDark]}>
-					Theme Test
-				</Text>
+				<Text style={[styles.cardTitle, isDark && styles.textDark]}>Theme Test</Text>
 				<View style={styles.buttonRow}>
 					<Pressable
 						style={({ pressed }) => [
@@ -116,21 +96,13 @@ export default function Home() {
 			</View>
 
 			<View style={[styles.card, isDark && styles.cardDark]}>
-				<Text style={[styles.cardTitle, isDark && styles.textDark]}>
-					tRPC Test
-				</Text>
+				<Text style={[styles.cardTitle, isDark && styles.textDark]}>tRPC Test</Text>
 				{isLoading ? (
-					<Text style={[styles.cardText, isDark && styles.textDark]}>
-						{t("common.loading")}
-					</Text>
+					<Text style={[styles.cardText, isDark && styles.textDark]}>{t("common.loading")}</Text>
 				) : isError ? (
-					<Text style={styles.errorText}>
-						{t("common.error")} - API not running?
-					</Text>
+					<Text style={styles.errorText}>{t("common.error")} - API not running?</Text>
 				) : (
-					<Text style={[styles.cardText, isDark && styles.textDark]}>
-						{helloData?.message}
-					</Text>
+					<Text style={[styles.cardText, isDark && styles.textDark]}>{helloData?.message}</Text>
 				)}
 			</View>
 		</View>

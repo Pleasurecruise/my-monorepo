@@ -37,6 +37,9 @@ next-env.d.ts
 
 .idea/
 .vscode/
+.claude/
+.codex/
+.cursor/
 
 # turbo
 .turbo

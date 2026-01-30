@@ -1,9 +1,5 @@
 import { describe, it, expect } from "vitest";
-import {
-	getCurrentLanguage,
-	changeLanguage,
-	supportedLanguages,
-} from "./index";
+import { getCurrentLanguage, changeLanguage, supportedLanguages } from "./index";
 
 describe("i18n", () => {
 	it("should have supported languages", () => {

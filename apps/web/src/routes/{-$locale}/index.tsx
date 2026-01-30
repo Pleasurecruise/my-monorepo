@@ -11,9 +11,7 @@ import {
 } from "@my-monorepo/i18n";
 import { useTheme } from "@my-monorepo/theme";
 
-function isValidLocale(
-	locale: string | undefined,
-): locale is SupportedLanguage {
+function isValidLocale(locale: string | undefined): locale is SupportedLanguage {
 	return supportedLanguages.includes(locale as SupportedLanguage);
 }
 
@@ -37,11 +35,7 @@ function Home() {
 	const { t } = useTranslation();
 	const { theme, setTheme } = useTheme();
 
-	const {
-		data: helloData,
-		isLoading,
-		isError,
-	} = useQuery(trpc.hello.greet.queryOptions());
+	const { data: helloData, isLoading, isError } = useQuery(trpc.hello.greet.queryOptions());
 
 	return (
 		<div className="flex flex-col gap-4 p-4">

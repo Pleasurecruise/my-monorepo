@@ -1,11 +1,6 @@
 import { describe, it, expect } from "vitest";
 import { appRouter } from "@my-monorepo/api/routers";
-import {
-	t,
-	changeLanguage,
-	getCurrentLanguage,
-	supportedLanguages,
-} from "@my-monorepo/i18n";
+import { t, changeLanguage, getCurrentLanguage, supportedLanguages } from "@my-monorepo/i18n";
 
 describe("Tauri App", () => {
 	describe("tRPC", () => {
