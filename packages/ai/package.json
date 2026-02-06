@@ -1,0 +1,25 @@
+{
+	"name": "@my-monorepo/ai",
+	"version": "1.0.0",
+	"private": true,
+	"type": "module",
+	"exports": {
+		".": "./src/index.ts"
+	},
+	"scripts": {
+		"lint": "oxlint .",
+		"lint:fix": "oxlint --fix .",
+		"format": "oxfmt",
+		"format:check": "oxfmt --check",
+		"check-types": "tsc --noEmit",
+		"test": "vitest run",
+		"test:coverage": "vitest run --coverage"
+	},
+	"dependencies": {
+		"ai": "latest"
+	},
+	"devDependencies": {
+		"@my-monorepo/tsconfig": "*",
+		"@types/node": "latest"
+	}
+}
