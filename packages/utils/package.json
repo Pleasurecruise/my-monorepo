@@ -4,7 +4,10 @@
 	"private": true,
 	"type": "module",
 	"exports": {
-		".": "./src/index.ts"
+		".": "./src/index.ts",
+		"./crypto": "./src/crypto.ts",
+		"./format": "./src/format.ts",
+		"./validators": "./src/validators.ts"
 	},
 	"scripts": {
 		"lint": "oxlint .",
@@ -17,6 +20,7 @@
 	},
 	"dependencies": {
 		"date-fns": "latest",
+		"jose": "latest",
 		"lodash": "latest",
 		"nuqs": "latest",
 		"superjson": "latest",
@@ -26,6 +30,7 @@
 	"devDependencies": {
 		"@my-monorepo/tsconfig": "*",
 		"@types/lodash": "latest",
+		"@types/node": "latest",
 		"@types/validator": "latest"
 	}
 }
