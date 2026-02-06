@@ -1,9 +1,10 @@
+import "@/load-env";
 import { Hono } from "hono";
 import { cors } from "hono/cors";
 import { trpcServer } from "@hono/trpc-server";
 import { createLoggerWithContext } from "@my-monorepo/logger";
-import { appRouter } from "./trpc/routers";
-import { createTRPCContext } from "./trpc/init";
+import { appRouter } from "@/trpc/routers";
+import { createTRPCContext } from "@/trpc/init";
 
 const logger = createLoggerWithContext("api");
 
@@ -17,7 +18,7 @@ app.use(
 			"http://localhost:1420", // tauri
 		],
 		allowMethods: ["GET", "POST", "OPTIONS"],
-		allowHeaders: ["Content-Type"],
+		allowHeaders: ["Content-Type", "trpc-accept", "trpc-batch-mode", "x-trpc-source"],
 	}),
 );
 

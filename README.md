@@ -19,7 +19,7 @@ The toolchain used here is sourced from the [VoidZero](https://voidzero.dev/abou
 
 ## TODO List
 
-- [ ] Add ai-sdk package
+- [x] Add ai-sdk package
 - [ ] Add authentication package
 - [ ] Add database package
 - [ ] Set up CI/CD pipeline

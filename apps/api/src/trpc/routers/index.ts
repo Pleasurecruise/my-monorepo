@@ -1,7 +1,8 @@
+import "@/load-env";
 import type { inferRouterInputs, inferRouterOutputs } from "@trpc/server";
-import { createTRPCRouter } from "../init";
-import { chatRouter } from "./chat";
-import { helloRouter } from "./hello";
+import { createTRPCRouter } from "@/trpc/init";
+import { chatRouter } from "@/trpc/routers/chat";
+import { helloRouter } from "@/trpc/routers/hello";
 
 export const appRouter = createTRPCRouter({
 	chat: chatRouter,

@@ -7,6 +7,7 @@
 		".": "./src/index.ts",
 		"./crypto": "./src/crypto.ts",
 		"./format": "./src/format.ts",
+		"./ids": "./src/ids.ts",
 		"./validators": "./src/validators.ts"
 	},
 	"scripts": {

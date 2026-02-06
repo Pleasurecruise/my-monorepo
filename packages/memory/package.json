@@ -1,5 +1,5 @@
 {
-	"name": "@my-monorepo/ai",
+	"name": "@my-monorepo/memory",
 	"version": "1.0.0",
 	"private": true,
 	"type": "module",
@@ -16,14 +16,11 @@
 		"test:coverage": "vitest run --coverage"
 	},
 	"dependencies": {
-		"@ai-sdk/openai-compatible": "latest",
-		"@my-monorepo/memory": "*",
-		"@my-monorepo/utils": "*",
-		"ai": "latest",
-		"resumable-stream": "latest"
+		"@my-monorepo/logger": "*",
+		"@types/redis": "latest",
+		"redis": "latest"
 	},
 	"devDependencies": {
-		"@my-monorepo/tsconfig": "*",
-		"@types/node": "latest"
+		"@my-monorepo/tsconfig": "*"
 	}
 }

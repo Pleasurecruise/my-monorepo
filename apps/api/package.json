@@ -4,11 +4,14 @@
 	"private": true,
 	"type": "module",
 	"exports": {
-		"./routers": "./src/trpc/routers/index.ts"
+		"./routers": {
+			"types": "./dist/trpc/routers/index.d.ts",
+			"default": "./dist/trpc/routers/index.js"
+		}
 	},
 	"scripts": {
 		"dev": "bun run --hot src/index.ts",
-		"build": "bun build src/index.ts --outdir=dist --target=bun",
+		"build": "bun build src/index.ts --outdir=dist --target=bun && bun build src/trpc/routers/index.ts --outdir=dist/trpc/routers --target=node && tsc --emitDeclarationOnly --project tsconfig.json --outDir dist && bunx tsc-alias -p tsconfig.json --outDir dist",
 		"start": "bun run dist/index.js",
 		"check-types": "tsc --noEmit",
 		"lint": "oxlint .",
@@ -28,6 +31,7 @@
 	},
 	"devDependencies": {
 		"@my-monorepo/tsconfig": "*",
-		"@types/node": "latest"
+		"@types/node": "latest",
+		"tsc-alias": "latest"
 	}
 }

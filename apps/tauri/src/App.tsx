@@ -1,8 +1,8 @@
 import { useQuery } from "@tanstack/react-query";
 import { useTheme } from "@my-monorepo/theme";
 import { Button } from "@my-monorepo/ui/components/button";
-import { trpc } from "./lib/trpc";
-import { setLanguage } from "./lib/i18n";
+import { trpc } from "@/lib/trpc";
+import { setLanguage } from "@/lib/i18n";
 import { useTranslation, getCurrentLanguage } from "@my-monorepo/i18n";
 
 function App() {

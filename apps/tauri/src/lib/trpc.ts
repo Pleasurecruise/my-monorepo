@@ -2,7 +2,7 @@ import { createTRPCClient, httpBatchLink } from "@trpc/client";
 import { createTRPCOptionsProxy } from "@trpc/tanstack-react-query";
 import type { AppRouter } from "@my-monorepo/api/routers";
 import superjson from "superjson";
-import { createQueryClient } from "./query-client";
+import { createQueryClient } from "@/lib/query-client";
 
 const queryClient = createQueryClient();
 
