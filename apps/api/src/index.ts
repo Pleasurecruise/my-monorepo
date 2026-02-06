@@ -1,8 +1,11 @@
 import { Hono } from "hono";
 import { cors } from "hono/cors";
 import { trpcServer } from "@hono/trpc-server";
+import { createLoggerWithContext } from "@my-monorepo/logger";
 import { appRouter } from "./trpc/routers";
 import { createTRPCContext } from "./trpc/init";
+
+const logger = createLoggerWithContext("api");
 
 const app = new Hono();
 
@@ -32,7 +35,7 @@ app.get("/", (c) => {
 
 const port = Number(process.env.PORT) || 5173;
 
-console.log(`Server running on http://localhost:${port}`);
+logger.info(`Server running on http://localhost:${port}`);
 
 export default {
 	port,

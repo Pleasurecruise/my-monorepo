@@ -1,5 +1,5 @@
 {
-	"name": "@my-monorepo/utils",
+	"name": "@my-monorepo/logger",
 	"version": "1.0.0",
 	"private": true,
 	"type": "module",
@@ -16,16 +16,10 @@
 		"test:coverage": "vitest run --coverage"
 	},
 	"dependencies": {
-		"date-fns": "latest",
-		"lodash": "latest",
-		"nuqs": "latest",
-		"superjson": "latest",
-		"validator": "latest",
-		"zod": "latest"
+		"pino": "latest",
+		"pino-pretty": "latest"
 	},
 	"devDependencies": {
-		"@my-monorepo/tsconfig": "*",
-		"@types/lodash": "latest",
-		"@types/validator": "latest"
+		"@my-monorepo/tsconfig": "*"
 	}
 }

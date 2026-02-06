@@ -20,6 +20,7 @@
 	},
 	"dependencies": {
 		"@hono/trpc-server": "latest",
+		"@my-monorepo/logger": "*",
 		"@my-monorepo/utils": "*",
 		"@trpc/server": "latest",
 		"hono": "latest"

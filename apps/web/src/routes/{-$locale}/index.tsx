@@ -39,14 +39,14 @@ function Home() {
 
 	return (
 		<div className="flex flex-col gap-4 p-4">
-			<div className="p-4 border rounded">
+			<div className="p-4 border rounded bg-card text-card-foreground">
 				<h2 className="text-lg font-bold mb-2">i18n Test</h2>
 				<p>{t("common.welcome")}</p>
 				<div className="flex gap-2 mt-2">
 					<Link
 						to="/{-$locale}"
 						params={{ locale: undefined }}
-						className="px-3 py-1 border rounded hover:bg-gray-100"
+						className="px-3 py-1 border rounded"
 						activeProps={{ className: "bg-blue-500 text-white" }}
 					>
 						EN
@@ -54,7 +54,7 @@ function Home() {
 					<Link
 						to="/{-$locale}"
 						params={{ locale: "zh" }}
-						className="px-3 py-1 border rounded hover:bg-gray-100"
+						className="px-3 py-1 border rounded"
 						activeProps={{ className: "bg-blue-500 text-white" }}
 					>
 						中文
@@ -92,7 +92,7 @@ function Home() {
 				</div>
 			</div>
 
-			<div className="p-4 border rounded">
+			<div className="p-4 border rounded bg-card text-card-foreground">
 				<h2 className="text-lg font-bold mb-2">tRPC Test</h2>
 				{isLoading ? (
 					<p>{t("common.loading")}</p>
