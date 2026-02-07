@@ -5,8 +5,8 @@ import { createTRPCClient, httpBatchStreamLink } from "@trpc/client";
 import { useEffect, useState } from "react";
 import { Button } from "@my-monorepo/ui/components/button";
 import type { AppRouter } from "@my-monorepo/api/routers";
+import { superjson } from "@my-monorepo/utils";
 import { trpc } from "@/lib/trpc";
-import superjson from "superjson";
 import {
 	useTranslation,
 	changeLanguage,
