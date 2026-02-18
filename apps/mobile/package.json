@@ -21,8 +21,8 @@
 		"ios": "expo run:ios"
 	},
 	"dependencies": {
-		"@my-monorepo/i18n": "*",
-		"@my-monorepo/utils": "*",
+		"@my-monorepo/i18n": "workspace:*",
+		"@my-monorepo/utils": "workspace:*",
 		"@tanstack/react-query": "latest",
 		"@trpc/client": "latest",
 		"@trpc/tanstack-react-query": "latest",
@@ -36,6 +36,6 @@
 		"react-native-screens": "4.16.0"
 	},
 	"devDependencies": {
-		"@my-monorepo/api": "*"
+		"@my-monorepo/api": "workspace:*"
 	}
 }

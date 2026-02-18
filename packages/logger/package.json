@@ -20,6 +20,6 @@
 		"pino-pretty": "latest"
 	},
 	"devDependencies": {
-		"@my-monorepo/tsconfig": "*"
+		"@my-monorepo/tsconfig": "workspace:*"
 	}
 }

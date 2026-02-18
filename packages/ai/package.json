@@ -17,13 +17,13 @@
 	},
 	"dependencies": {
 		"@ai-sdk/openai-compatible": "latest",
-		"@my-monorepo/memory": "*",
-		"@my-monorepo/utils": "*",
+		"@my-monorepo/memory": "workspace:*",
+		"@my-monorepo/utils": "workspace:*",
 		"ai": "latest",
 		"resumable-stream": "latest"
 	},
 	"devDependencies": {
-		"@my-monorepo/tsconfig": "*",
+		"@my-monorepo/tsconfig": "workspace:*",
 		"@types/node": "latest"
 	}
 }

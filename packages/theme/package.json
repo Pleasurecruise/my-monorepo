@@ -16,7 +16,7 @@
 		"test:coverage": "vitest run --coverage"
 	},
 	"devDependencies": {
-		"@my-monorepo/tsconfig": "*",
+		"@my-monorepo/tsconfig": "workspace:*",
 		"@tauri-apps/api": "latest"
 	}
 }

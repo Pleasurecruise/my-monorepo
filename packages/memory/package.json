@@ -16,11 +16,11 @@
 		"test:coverage": "vitest run --coverage"
 	},
 	"dependencies": {
-		"@my-monorepo/logger": "*",
+		"@my-monorepo/logger": "workspace:*",
 		"@types/redis": "latest",
 		"redis": "latest"
 	},
 	"devDependencies": {
-		"@my-monorepo/tsconfig": "*"
+		"@my-monorepo/tsconfig": "workspace:*"
 	}
 }

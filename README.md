@@ -8,7 +8,7 @@ Huge thanks to [midday](https://github.com/midday-ai/midday) !!!
 
 The toolchain used here is sourced from the [VoidZero](https://voidzero.dev/about) ecosystem.
 
-- [bun](https://bun.sh/) - package manager and runtime
+- [pnpm](https://pnpm.io/) - package manager (workspace-native, fast monorepo installs)
 - [oxfmt](https://oxc.rs/docs/guide/usage/formatter.html) - for formatting
 - [oxlint](https://oxc.rs/docs/guide/usage/linter/config.html) - for linting
 - [vite](https://vitejs.dev/config) - build tool
@@ -20,7 +20,7 @@ The toolchain used here is sourced from the [VoidZero](https://voidzero.dev/abou
 ## TODO List
 
 - [x] Add ai-sdk package
+- [x] Set up CI/CD pipeline
 - [ ] Add authentication package
 - [ ] Add database package
-- [ ] Set up CI/CD pipeline
 - etc.

@@ -15,10 +15,10 @@
 		"test:coverage": "vitest run --coverage"
 	},
 	"dependencies": {
-		"@my-monorepo/i18n": "*",
-		"@my-monorepo/theme": "*",
-		"@my-monorepo/ui": "*",
-		"@my-monorepo/utils": "*",
+		"@my-monorepo/i18n": "workspace:*",
+		"@my-monorepo/theme": "workspace:*",
+		"@my-monorepo/ui": "workspace:*",
+		"@my-monorepo/utils": "workspace:*",
 		"@tanstack/react-query": "latest",
 		"@tanstack/react-router": "latest",
 		"@tanstack/react-start": "latest",
@@ -26,7 +26,7 @@
 		"@trpc/tanstack-react-query": "latest"
 	},
 	"devDependencies": {
-		"@my-monorepo/api": "*",
-		"@my-monorepo/tsconfig": "*"
+		"@my-monorepo/api": "workspace:*",
+		"@my-monorepo/tsconfig": "workspace:*"
 	}
 }
