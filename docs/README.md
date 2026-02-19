@@ -29,7 +29,6 @@ graph BT
         UI[ui]
         THEME[theme]
         LOGGER[logger]
-        MEMORY[memory]
         AI[ai]
     end
 
@@ -43,7 +42,6 @@ graph BT
     TSCONFIG --> UTILS & I18N & UI & THEME & LOGGER & MEMORY & AI
     LOGGER --> MEMORY
     UTILS --> AI
-    MEMORY --> AI
     UTILS --> API
     LOGGER --> API
     AI --> API

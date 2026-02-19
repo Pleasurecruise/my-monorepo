@@ -17,10 +17,8 @@
 	},
 	"dependencies": {
 		"@ai-sdk/openai-compatible": "latest",
-		"@my-monorepo/memory": "workspace:*",
 		"@my-monorepo/utils": "workspace:*",
-		"ai": "latest",
-		"resumable-stream": "latest"
+		"ai": "latest"
 	},
 	"devDependencies": {
 		"@my-monorepo/tsconfig": "workspace:*",

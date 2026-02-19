@@ -1,8 +1,14 @@
 // src/routes/{-$locale}/index.tsx
-import { createFileRoute, Link, redirect } from "@tanstack/react-router";
+import {
+	createFileRoute,
+	Link,
+	redirect,
+	useRouter,
+	useRouteContext,
+} from "@tanstack/react-router";
 import { useQuery } from "@tanstack/react-query";
 import { createTRPCClient, httpBatchStreamLink } from "@trpc/client";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Button } from "@my-monorepo/ui/components/button";
 import type { AppRouter } from "@my-monorepo/api/routers";
 import { superjson } from "@my-monorepo/utils";
@@ -13,50 +19,11 @@ import {
 	supportedLanguages,
 	type SupportedLanguage,
 } from "@my-monorepo/i18n";
-import { useTheme } from "@my-monorepo/theme";
+import { setThemeServerFn } from "@/lib/theme";
 
 function isValidLocale(locale: string | undefined): locale is SupportedLanguage {
 	return supportedLanguages.includes(locale as SupportedLanguage);
 }
-
-type ResumeState = {
-	streamId: string;
-	resumeAt: number;
-	assistantText: string;
-	status: "streaming" | "done" | "error";
-};
-
-const RESUME_STORAGE_KEY = "chat-resume";
-
-const loadResumeState = (): ResumeState | null => {
-	if (typeof window === "undefined") {
-		return null;
-	}
-
-	const saved = sessionStorage.getItem(RESUME_STORAGE_KEY);
-	if (!saved) {
-		return null;
-	}
-
-	try {
-		return JSON.parse(saved) as ResumeState;
-	} catch {
-		return null;
-	}
-};
-
-const saveResumeState = (state: ResumeState | null) => {
-	if (typeof window === "undefined") {
-		return;
-	}
-
-	if (!state) {
-		sessionStorage.removeItem(RESUME_STORAGE_KEY);
-		return;
-	}
-
-	sessionStorage.setItem(RESUME_STORAGE_KEY, JSON.stringify(state));
-};
 
 export const Route = createFileRoute("/{-$locale}/")({
 	component: Home,
@@ -84,31 +51,20 @@ const chatClient = createTRPCClient<AppRouter>({
 
 function Home() {
 	const { locale } = Route.useRouteContext();
+	const { theme } = useRouteContext({ from: "__root__" });
+	const router = useRouter();
 	const { t } = useTranslation();
-	const { theme, setTheme } = useTheme();
 
 	const { data: helloData, isLoading, isError } = useQuery(trpc.hello.greet.queryOptions());
 	const [prompt, setPrompt] = useState("");
 	const [assistantText, setAssistantText] = useState("");
 	const [streamStatus, setStreamStatus] = useState<"idle" | "streaming" | "done" | "error">("idle");
 	const [errorMessage, setErrorMessage] = useState<string | null>(null);
-	const [streamId, setStreamId] = useState<string | null>(null);
-	const [resumeState, setResumeState] = useState<ResumeState | null>(null);
 
-	useEffect(() => {
-		const saved = loadResumeState();
-		if (!saved) {
-			return;
-		}
-
-		setResumeState(saved);
-		setAssistantText(saved.assistantText);
-		setStreamId(saved.streamId);
-	}, []);
-
-	const updateResumeState = (nextState: ResumeState | null) => {
-		setResumeState(nextState);
-		saveResumeState(nextState);
+	const toggleTheme = () => {
+		const themes = ["light", "dark", "auto"] as const;
+		const next = themes[(themes.indexOf(theme) + 1) % themes.length]!;
+		setThemeServerFn({ data: next }).then(() => router.invalidate());
 	};
 
 	const handleSendMessage = async () => {
@@ -119,8 +75,6 @@ function Home() {
 
 		setAssistantText("");
 		setErrorMessage(null);
-		setStreamId(null);
-		updateResumeState(null);
 		setStreamStatus("streaming");
 
 		try {
@@ -130,75 +84,13 @@ function Home() {
 			});
 
 			for await (const chunk of stream) {
-				setStreamId(chunk.streamId);
-
 				if (chunk.text) {
 					runningText += chunk.text;
 					setAssistantText(runningText);
 				}
 
-				if (chunk.resumable && typeof chunk.resumeAt === "number") {
-					updateResumeState({
-						streamId: chunk.streamId,
-						resumeAt: chunk.resumeAt,
-						assistantText: runningText,
-						status: chunk.status,
-					});
-				}
-
 				if (chunk.status === "done") {
 					setStreamStatus("done");
-					updateResumeState(null);
-				}
-
-				if (chunk.status === "error") {
-					setStreamStatus("error");
-				}
-			}
-		} catch (error) {
-			setStreamStatus("error");
-			setErrorMessage(error instanceof Error ? error.message : "Unknown error");
-		}
-	};
-
-	const handleResumeStream = async () => {
-		if (!resumeState || streamStatus === "streaming") {
-			return;
-		}
-
-		setErrorMessage(null);
-		setStreamStatus("streaming");
-		setStreamId(resumeState.streamId);
-
-		try {
-			let runningText = resumeState.assistantText || "";
-			setAssistantText(runningText);
-
-			const stream = await chatClient.chat.sendMessage.mutate({
-				streamId: resumeState.streamId,
-				resumeAt: resumeState.resumeAt,
-			});
-
-			for await (const chunk of stream) {
-				setStreamId(chunk.streamId);
-
-				if (chunk.text) {
-					runningText += chunk.text;
-					setAssistantText(runningText);
-				}
-
-				if (chunk.resumable && typeof chunk.resumeAt === "number") {
-					updateResumeState({
-						streamId: chunk.streamId,
-						resumeAt: chunk.resumeAt,
-						assistantText: runningText,
-						status: chunk.status,
-					});
-				}
-
-				if (chunk.status === "done") {
-					setStreamStatus("done");
-					updateResumeState(null);
 				}
 
 				if (chunk.status === "error") {
@@ -241,29 +133,9 @@ function Home() {
 
 			<div className="p-4 border rounded bg-card text-card-foreground">
 				<h2 className="text-lg font-bold mb-2">Theme Test</h2>
-				<div className="flex gap-2">
-					<Button
-						type="button"
-						variant={theme === "light" ? "default" : "outline"}
-						onClick={() => setTheme("light")}
-					>
-						Light
-					</Button>
-					<Button
-						type="button"
-						variant={theme === "dark" ? "default" : "outline"}
-						onClick={() => setTheme("dark")}
-					>
-						Dark
-					</Button>
-					<Button
-						type="button"
-						variant={theme === "system" ? "default" : "outline"}
-						onClick={() => setTheme("system")}
-					>
-						System
-					</Button>
-				</div>
+				<Button type="button" onClick={toggleTheme}>
+					{theme}
+				</Button>
 			</div>
 
 			<div className="p-4 border rounded bg-card text-card-foreground">
@@ -293,34 +165,16 @@ function Home() {
 						<Button
 							type="button"
 							variant="outline"
-							onClick={handleResumeStream}
-							disabled={!resumeState || streamStatus === "streaming"}
-						>
-							Resume
-						</Button>
-						<Button
-							type="button"
-							variant="outline"
 							onClick={() => {
 								setPrompt("");
 								setAssistantText("");
 								setErrorMessage(null);
-								setStreamId(null);
-								updateResumeState(null);
 								setStreamStatus("idle");
 							}}
 						>
 							Clear
 						</Button>
 						<span className="text-sm text-muted-foreground">Status: {streamStatus}</span>
-						{streamId ? (
-							<span className="text-sm text-muted-foreground">Stream ID: {streamId}</span>
-						) : null}
-						{resumeState ? (
-							<span className="text-sm text-muted-foreground">
-								Resume At: {resumeState.resumeAt}
-							</span>
-						) : null}
 					</div>
 					{errorMessage ? <p className="text-sm text-red-500">{errorMessage}</p> : null}
 					<div className="min-h-30 whitespace-pre-wrap rounded border bg-muted p-3 text-sm">

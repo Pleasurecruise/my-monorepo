@@ -3,18 +3,16 @@
 ## Project Structure & Module Organization
 - `apps/` hosts the runnable products with their frameworks:
   - `api/`: Node.js runtime, Hono HTTP server (`@hono/node-server`), tRPC API layer (uses `@my-monorepo/ai`, `@my-monorepo/logger` and `@my-monorepo/utils`). Dev server via `tsx watch`.
-  - `web/`: React + TanStack Router/React Query/React Start, built with Vite (uses `ui`, `theme`, `i18n`).
-  - `tauri/`: Tauri v2 desktop app (Rust core in `apps/tauri/src-tauri`) with a React + Vite frontend (uses `ui`, `theme`, `i18n`).
+  - `web/`: React + TanStack Router/React Query/React Start, built with Vite (uses `ui`, `i18n`).
+  - `tauri/`: Tauri v2 desktop app (Rust core in `apps/tauri/src-tauri`) with a React + Vite frontend (uses `ui`, `i18n`).
   - `mobile/`: Expo (React Native) with Expo Router (uses `i18n`).
 - `packages/` contains shared libraries and their roles:
   - `tsconfig/`: shared TS configs (`base`, `hono`, `react-app`, `react-library`).
   - `utils/`: cross-app helpers for crypto/formatting/validation, plus shared libs (zod, validator, date-fns, superjson, etc.).
   - `i18n/`: i18next setup, locale exports, and React hooks.
   - `ui/`: shared UI components and styles (shadcn/ui, Radix, Tailwind, CVA utilities).
-  - `theme/`: theme provider + helpers for light/dark/system.
   - `logger/`: pino-based logger with context helpers.
-  - `ai/`: AI SDK wrapper (ai-sdk + OpenAI-compatible provider) with resumable streaming support.
-  - `memory/`: Redis-backed memory/context store for AI streams.
+  - `ai/`: AI SDK wrapper (ai-sdk + OpenAI-compatible provider) for streaming chat.
 - `docs/README.md` documents the dependency graph and how apps consume shared packages.
 
 ## Build, Test, and Development Commands

@@ -16,7 +16,6 @@
 	},
 	"dependencies": {
 		"@my-monorepo/i18n": "workspace:*",
-		"@my-monorepo/theme": "workspace:*",
 		"@my-monorepo/ui": "workspace:*",
 		"@my-monorepo/utils": "workspace:*",
 		"@tanstack/react-query": "latest",
