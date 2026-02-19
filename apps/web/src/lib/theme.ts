@@ -1,6 +1,6 @@
 import { createServerFn } from "@tanstack/react-start";
 import { getCookie, setCookie } from "@tanstack/react-start/server";
-import * as z from "zod";
+import { z } from "@my-monorepo/utils";
 
 const storageKey = "app-theme";
 
