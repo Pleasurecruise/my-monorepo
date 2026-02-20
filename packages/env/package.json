@@ -1,0 +1,19 @@
+{
+	"name": "@my-monorepo/env",
+	"version": "1.0.0",
+	"private": true,
+	"type": "module",
+	"exports": {
+		".": "./src/index.ts"
+	},
+	"scripts": {
+		"check-types": "tsc --noEmit"
+	},
+	"dependencies": {
+		"@my-monorepo/utils": "workspace:*"
+	},
+	"devDependencies": {
+		"@my-monorepo/tsconfig": "workspace:*",
+		"@types/node": "latest"
+	}
+}

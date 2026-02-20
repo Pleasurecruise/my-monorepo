@@ -1,0 +1,30 @@
+{
+	"name": "@my-monorepo/db",
+	"version": "1.0.0",
+	"private": true,
+	"type": "module",
+	"exports": {
+		".": "./src/index.ts"
+	},
+	"scripts": {
+		"lint": "oxlint .",
+		"lint:fix": "oxlint --fix .",
+		"format": "oxfmt",
+		"format:check": "oxfmt --check",
+		"check-types": "tsc --noEmit",
+		"db:generate": "prisma generate",
+		"db:push": "prisma db push",
+		"db:migrate": "prisma migrate dev",
+		"db:studio": "prisma studio"
+	},
+	"dependencies": {
+		"@prisma/adapter-pg": "latest",
+		"@prisma/client": "latest"
+	},
+	"devDependencies": {
+		"@my-monorepo/env": "workspace:*",
+		"@my-monorepo/tsconfig": "workspace:*",
+		"@types/node": "latest",
+		"prisma": "latest"
+	}
+}

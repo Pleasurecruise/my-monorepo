@@ -25,6 +25,8 @@
 		"@hono/node-server": "latest",
 		"@hono/trpc-server": "latest",
 		"@my-monorepo/ai": "workspace:*",
+		"@my-monorepo/auth": "workspace:*",
+		"@my-monorepo/env": "workspace:*",
 		"@my-monorepo/logger": "workspace:*",
 		"@my-monorepo/utils": "workspace:*",
 		"@trpc/server": "latest",

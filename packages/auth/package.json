@@ -1,0 +1,27 @@
+{
+	"name": "@my-monorepo/auth",
+	"version": "1.0.0",
+	"private": true,
+	"type": "module",
+	"exports": {
+		".": "./src/index.ts",
+		"./server": "./src/server.ts",
+		"./client": "./src/client.ts"
+	},
+	"scripts": {
+		"lint": "oxlint .",
+		"lint:fix": "oxlint --fix .",
+		"format": "oxfmt",
+		"format:check": "oxfmt --check",
+		"check-types": "tsc --noEmit"
+	},
+	"dependencies": {
+		"@my-monorepo/db": "workspace:*",
+		"@my-monorepo/utils": "workspace:*",
+		"better-auth": "latest"
+	},
+	"devDependencies": {
+		"@my-monorepo/tsconfig": "workspace:*",
+		"@types/node": "latest"
+	}
+}
