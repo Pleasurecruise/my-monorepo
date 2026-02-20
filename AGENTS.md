@@ -9,9 +9,12 @@
 - `packages/` contains shared libraries and their roles:
   - `tsconfig/`: shared TS configs (`base`, `hono`, `react-app`, `react-library`).
   - `utils/`: cross-app helpers for crypto/formatting/validation, plus shared libs (zod, validator, date-fns, superjson, etc.).
+  - `env/`: type-safe environment variable validation using Zod.
   - `i18n/`: i18next setup, locale exports, and React hooks.
   - `ui/`: shared UI components and styles (shadcn/ui, Radix, Tailwind, CVA utilities).
   - `logger/`: pino-based logger with context helpers.
+  - `db/`: Prisma client wrapper and database schema management.
+  - `auth/`: authentication layer using better-auth with Prisma adapter.
   - `ai/`: AI SDK wrapper (ai-sdk + OpenAI-compatible provider) for streaming chat.
 - `docs/README.md` documents the dependency graph and how apps consume shared packages.
 

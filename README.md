@@ -14,6 +14,7 @@ The toolchain used here is sourced from the [VoidZero](https://voidzero.dev/abou
 - [vite](https://vitejs.dev/config) - build tool
 - [vitest](https://vitest.dev/guide) - testing framework
 - [rolldown](https://rolldown.rs/guide/getting-started) - bundler
+- [tsgo](https://github.com/microsoft/typescript-go) - compile ts to js
 - [turbo](https://turborepo.dev/docs/reference/configuration) - monorepo management
 - [typescript](https://www.typescriptlang.org/docs/handbook/tsconfig-json.html) - main programming language
 
@@ -21,6 +22,6 @@ The toolchain used here is sourced from the [VoidZero](https://voidzero.dev/abou
 
 - [x] Add ai-sdk package
 - [x] Set up CI/CD pipeline
-- [ ] Add authentication package
-- [ ] Add database package
+- [x] Add authentication package
+- [x] Add database package
 - etc.

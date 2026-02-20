@@ -11,12 +11,13 @@
 
 - [`@my-monorepo/tsconfig`](../packages/tsconfig) - Shared TypeScript base configs (base, hono, react-app, react-library).
 - [`@my-monorepo/utils`](../packages/utils) - Cross-app helpers for crypto/format/validation and shared libs (zod, validator, date-fns, superjson, jose, etc.).
+- [`@my-monorepo/env`](../packages/env) - Type-safe environment variable validation using Zod.
 - [`@my-monorepo/i18n`](../packages/i18n) - i18next setup with locale bundles and React hooks.
 - [`@my-monorepo/ui`](../packages/ui) - Shared UI components/styles (shadcn/ui, Radix, Tailwind, CVA/clsx).
-- [`@my-monorepo/theme`](../packages/theme) - Theme provider + helpers for light/dark/system.
 - [`@my-monorepo/logger`](../packages/logger) - Pino-based logger with contextual helpers.
-- [`@my-monorepo/ai`](../packages/ai) - AI SDK wrapper (ai-sdk + OpenAI-compatible provider) with resumable streaming support.
-- [`@my-monorepo/memory`](../packages/memory) - Redis-backed memory/context store used by the AI package for resumable streams.
+- [`@my-monorepo/auth`](../packages/auth) - Authentication layer using better-auth with Prisma adapter.
+- [`@my-monorepo/db`](../packages/db) - Prisma client wrapper for database access.
+- [`@my-monorepo/ai`](../packages/ai) - AI SDK wrapper (ai-sdk + OpenAI-compatible provider).
 
 ## Dependency Graph
 
@@ -25,10 +26,12 @@ graph BT
     subgraph Packages
         TSCONFIG[tsconfig]
         UTILS[utils]
+        ENV[env]
         I18N[i18n]
         UI[ui]
-        THEME[theme]
         LOGGER[logger]
+        DB[db]
+        AUTH[auth]
         AI[ai]
     end
 
@@ -39,15 +42,15 @@ graph BT
         MOBILE[mobile]
     end
 
-    TSCONFIG --> UTILS & I18N & UI & THEME & LOGGER & MEMORY & AI
-    LOGGER --> MEMORY
-    UTILS --> AI
-    UTILS --> API
+    TSCONFIG --> UTILS & ENV & I18N & UI & LOGGER & DB & AUTH & AI
+    UTILS --> AUTH & AI & API
+    ENV --> AUTH & API & WEB & TAURI
+    DB --> AUTH & API
     LOGGER --> API
     AI --> API
+    AUTH --> API & WEB & TAURI
     I18N --> WEB & TAURI & MOBILE
     UI --> WEB & TAURI
-    THEME --> WEB & TAURI
 ```
 
 > All packages depend on `tsconfig`. Apps use `api` as a devDependency for tRPC type inference.

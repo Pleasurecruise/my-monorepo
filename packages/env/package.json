@@ -9,7 +9,8 @@
 		"./client": "./src/client.ts"
 	},
 	"scripts": {
-		"check-types": "tsgo --noEmit"
+		"check-types": "tsgo --noEmit",
+		"test": "vitest run"
 	},
 	"dependencies": {
 		"@my-monorepo/utils": "workspace:*"
