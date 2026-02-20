@@ -10,7 +10,7 @@
 		"dev:ios": "expo start --ios",
 		"build:android": "expo run:android",
 		"build:ios": "expo run:ios",
-		"check-types": "tsc --noEmit",
+		"check-types": "tsgo --noEmit",
 		"lint": "oxlint .",
 		"lint:fix": "oxlint --fix .",
 		"format": "oxfmt",

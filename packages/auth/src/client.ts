@@ -11,7 +11,7 @@ import type { Auth } from "./server.js";
  * import { createBetterAuthClient } from "@my-monorepo/auth/client";
  * const authClient = createBetterAuthClient("http://localhost:3000");
  */
-export function createBetterAuthClient(baseURL?: string) {
+function createBetterAuthClient(baseURL?: string) {
 	return createAuthClient({
 		baseURL,
 		plugins: [inferAdditionalFields<Auth>()],
@@ -23,6 +23,8 @@ export function createBetterAuthClient(baseURL?: string) {
  * Works when the client and API server share the same origin,
  * or when BETTER_AUTH_URL is set in the environment.
  */
-export const authClient = createBetterAuthClient();
+const authClient = createBetterAuthClient();
 
-export const { signIn, signOut, signUp, useSession, getSession } = authClient;
+const { signIn, signOut, signUp, useSession, getSession } = authClient;
+
+export { createBetterAuthClient, authClient, signIn, signOut, signUp, useSession, getSession };

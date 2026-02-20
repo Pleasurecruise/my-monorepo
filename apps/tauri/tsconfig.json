@@ -1,7 +1,6 @@
 {
 	"extends": "@my-monorepo/tsconfig/react-app.json",
 	"compilerOptions": {
-		"baseUrl": ".",
 		"paths": {
 			"@/*": ["./src/*"],
 			"@my-monorepo/ui/*": ["../../packages/ui/src/*"]

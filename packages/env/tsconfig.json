@@ -1,7 +1,9 @@
 {
 	"extends": "@my-monorepo/tsconfig/base.json",
 	"compilerOptions": {
-		"baseUrl": "."
+		"paths": {
+			"*": ["./*"]
+		}
 	},
 	"include": ["src"],
 	"exclude": ["node_modules", "dist"]

@@ -6,7 +6,7 @@
 	"scripts": {
 		"dev": "tauri dev",
 		"build": "tauri build",
-		"check-types": "tsc --noEmit",
+		"check-types": "tsgo --noEmit",
 		"lint": "oxlint .",
 		"lint:fix": "oxlint --fix .",
 		"format": "oxfmt",

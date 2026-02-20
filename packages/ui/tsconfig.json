@@ -1,7 +1,6 @@
 {
 	"extends": "@my-monorepo/tsconfig/react-library.json",
 	"compilerOptions": {
-		"baseUrl": ".",
 		"paths": {
 			"@my-monorepo/ui/*": ["./src/*"]
 		}
