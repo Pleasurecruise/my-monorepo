@@ -34,7 +34,6 @@
 	"devDependencies": {
 		"@my-monorepo/tsconfig": "workspace:*",
 		"@types/lodash": "latest",
-		"@types/node": "latest",
 		"@types/nodemailer": "latest",
 		"@types/validator": "latest"
 	}

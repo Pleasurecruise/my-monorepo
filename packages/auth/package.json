@@ -23,7 +23,6 @@
 		"better-auth": "latest"
 	},
 	"devDependencies": {
-		"@my-monorepo/tsconfig": "workspace:*",
-		"@types/node": "latest"
+		"@my-monorepo/tsconfig": "workspace:*"
 	}
 }
