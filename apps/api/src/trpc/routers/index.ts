@@ -1,4 +1,3 @@
-import "@my-monorepo/env";
 import type { inferRouterInputs, inferRouterOutputs } from "@trpc/server";
 import { createTRPCRouter } from "@/trpc/init";
 import { chatRouter } from "@/trpc/routers/chat";
