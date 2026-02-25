@@ -19,11 +19,11 @@
 		"test": "vitest run"
 	},
 	"dependencies": {
+		"@my-monorepo/env": "workspace:*",
 		"@prisma/adapter-pg": "latest",
 		"@prisma/client": "latest"
 	},
 	"devDependencies": {
-		"@my-monorepo/env": "workspace:*",
 		"@my-monorepo/tsconfig": "workspace:*",
 		"prisma": "latest"
 	}

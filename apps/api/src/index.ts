@@ -1,4 +1,3 @@
-import "@my-monorepo/env";
 import { serve } from "@hono/node-server";
 import { Hono } from "hono";
 import { cors } from "hono/cors";
@@ -13,7 +12,7 @@ const logger = createLoggerWithContext("api");
 
 const app = new Hono();
 
-const allowedOrigins = [env.BETTER_AUTH_URL, env.TAURI_URL].filter(Boolean) as string[];
+const allowedOrigins = [env.PUBLIC_WEB_ORIGIN, env.PUBLIC_TAURI_ORIGIN].filter(Boolean) as string[];
 
 app.use(
 	"*",
@@ -45,8 +44,12 @@ app.get("/", (c) => {
 	return c.json({ message: "tRPC API Server" });
 });
 
-const port = Number(process.env.PORT) || 5173;
+const apiOrigin = new URL(env.PUBLIC_API_ORIGIN);
+const port = Number.parseInt(
+	apiOrigin.port || (apiOrigin.protocol === "https:" ? "443" : "80"),
+	10,
+);
 
 serve({ fetch: app.fetch, port }, () => {
-	logger.info(`Server running on http://localhost:${port}`);
+	logger.info(`Server running on ${env.PUBLIC_API_ORIGIN}`);
 });

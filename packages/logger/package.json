@@ -16,6 +16,7 @@
 		"test:coverage": "vitest run --coverage"
 	},
 	"dependencies": {
+		"@my-monorepo/env": "workspace:*",
 		"pino": "latest",
 		"pino-pretty": "latest"
 	},

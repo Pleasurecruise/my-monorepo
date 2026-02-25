@@ -10,8 +10,7 @@ import { useQuery } from "@tanstack/react-query";
 import { createTRPCClient, httpBatchStreamLink } from "@trpc/client";
 import { useState } from "react";
 import { createBetterAuthClient } from "@my-monorepo/auth/client";
-
-const authClient = createBetterAuthClient(import.meta.env.VITE_API_URL);
+import { env } from "@my-monorepo/env/client";
 import { Button } from "@my-monorepo/ui/components/button";
 import type { AppRouter } from "@my-monorepo/api/routers";
 import { superjson } from "@my-monorepo/utils";
@@ -23,6 +22,8 @@ import {
 	type SupportedLanguage,
 } from "@my-monorepo/i18n";
 import { setThemeServerFn } from "@/lib/theme";
+
+const authClient = createBetterAuthClient(env.PUBLIC_WEB_ORIGIN);
 
 function isValidLocale(locale: string | undefined): locale is SupportedLanguage {
 	return supportedLanguages.includes(locale as SupportedLanguage);
@@ -46,7 +47,7 @@ export const Route = createFileRoute("/{-$locale}/")({
 const chatClient = createTRPCClient<AppRouter>({
 	links: [
 		httpBatchStreamLink({
-			url: `${import.meta.env.VITE_API_URL}/trpc`,
+			url: `${env.PUBLIC_API_ORIGIN}/trpc`,
 			transformer: superjson,
 		}),
 	],
@@ -111,7 +112,7 @@ function Home() {
 		setAuthError(null);
 		const { error } = await authClient.signIn.social({
 			provider,
-			callbackURL: "/",
+			callbackURL: env.PUBLIC_WEB_ORIGIN,
 		});
 		if (error) {
 			setAuthStatus("error");

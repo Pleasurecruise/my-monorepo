@@ -1,4 +1,5 @@
 import crypto from "node:crypto";
+import { env } from "@my-monorepo/env";
 import * as jose from "jose";
 
 /**
@@ -55,7 +56,7 @@ const IV_LENGTH = 16;
 const AUTH_TAG_LENGTH = 16;
 
 function getKey(): Buffer {
-	const key = process.env.ENCRYPTION_KEY;
+	const key = env.ENCRYPTION_KEY;
 	if (!key) {
 		throw new Error("ENCRYPTION_KEY environment variable is not set.");
 	}
@@ -127,7 +128,7 @@ export function hash(str: string): string {
  * Generates a short-lived JWT containing the teamId for file access.
  */
 export async function generateFileKey(teamId: string): Promise<string> {
-	const secret = process.env.FILE_KEY_SECRET;
+	const secret = env.FILE_KEY_SECRET;
 	if (!secret) {
 		throw new Error("FILE_KEY_SECRET environment variable is not set.");
 	}
@@ -143,7 +144,7 @@ export async function generateFileKey(teamId: string): Promise<string> {
  */
 export async function verifyFileKey(token: string): Promise<string | null> {
 	try {
-		const secret = process.env.FILE_KEY_SECRET;
+		const secret = env.FILE_KEY_SECRET;
 		if (!secret) {
 			return null;
 		}

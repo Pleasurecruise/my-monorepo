@@ -16,6 +16,7 @@
 	},
 	"dependencies": {
 		"@my-monorepo/auth": "workspace:*",
+		"@my-monorepo/env": "workspace:*",
 		"@my-monorepo/i18n": "workspace:*",
 		"@my-monorepo/ui": "workspace:*",
 		"@my-monorepo/utils": "workspace:*",

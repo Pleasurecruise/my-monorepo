@@ -1,5 +1,7 @@
 import { useState } from "react";
+import { openUrl } from "@tauri-apps/plugin-opener";
 import { createBetterAuthClient } from "@my-monorepo/auth/client";
+import { env } from "@my-monorepo/env/client";
 import { useQuery } from "@tanstack/react-query";
 import { createTRPCClient, httpBatchStreamLink } from "@trpc/client";
 import { Button } from "@my-monorepo/ui/components/button";
@@ -10,12 +12,12 @@ import { useTranslation, getCurrentLanguage } from "@my-monorepo/i18n";
 import type { AppRouter } from "@my-monorepo/api/routers";
 import { superjson } from "@my-monorepo/utils";
 
-const authClient = createBetterAuthClient(import.meta.env.VITE_API_URL);
+const authClient = createBetterAuthClient(env.PUBLIC_API_ORIGIN);
 
 const chatClient = createTRPCClient<AppRouter>({
 	links: [
 		httpBatchStreamLink({
-			url: `${import.meta.env.VITE_API_URL}/trpc`,
+			url: `${env.PUBLIC_API_ORIGIN}/trpc`,
 			transformer: superjson,
 		}),
 	],
@@ -65,15 +67,23 @@ function App() {
 	const handleSignInSocial = async (provider: "github" | "google") => {
 		setAuthStatus("loading");
 		setAuthError(null);
-		const { error } = await authClient.signIn.social({
+		// TODO: wait official tauri deep-link support
+		const { data, error } = await authClient.signIn.social({
 			provider,
-			callbackURL: "http://localhost:1420",
-			disableRedirect: true,
+			callbackURL: env.PUBLIC_TAURI_ORIGIN,
 		});
 		if (error) {
 			setAuthStatus("error");
 			setAuthError(error.message ?? "Sign in failed");
+			return;
 		}
+		if (!data?.url) {
+			setAuthStatus("error");
+			setAuthError("Social sign in URL missing");
+			return;
+		}
+		await openUrl(data.url);
+		setAuthStatus("idle");
 	};
 
 	const toggleLanguage = () => {

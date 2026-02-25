@@ -2,7 +2,7 @@
 
 ## Project Structure & Module Organization
 - `apps/` hosts the runnable products with their frameworks:
-  - `api/`: Node.js runtime, Hono HTTP server (`@hono/node-server`), tRPC API layer (uses `@my-monorepo/ai`, `@my-monorepo/logger` and `@my-monorepo/utils`). Dev server via `tsx watch`.
+  - `api/`: Node.js runtime, Hono HTTP server (`@hono/node-server`), tRPC API layer (uses `@my-monorepo/ai`, `@my-monorepo/auth`, `@my-monorepo/env`, `@my-monorepo/logger`, and `@my-monorepo/utils`). Dev server via `tsx watch`.
   - `web/`: React + TanStack Router/React Query/React Start, built with Vite (uses `ui`, `i18n`).
   - `tauri/`: Tauri v2 desktop app (Rust core in `apps/tauri/src-tauri`) with a React + Vite frontend (uses `ui`, `i18n`).
   - `mobile/`: Expo (React Native) with Expo Router (uses `i18n`).

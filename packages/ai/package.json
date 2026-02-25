@@ -17,6 +17,7 @@
 	},
 	"dependencies": {
 		"@ai-sdk/openai-compatible": "latest",
+		"@my-monorepo/env": "workspace:*",
 		"@my-monorepo/utils": "workspace:*",
 		"ai": "latest"
 	},

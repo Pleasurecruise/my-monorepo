@@ -21,6 +21,7 @@
 		"test:coverage": "vitest run --coverage"
 	},
 	"dependencies": {
+		"@my-monorepo/env": "workspace:*",
 		"@my-monorepo/logger": "workspace:*",
 		"date-fns": "latest",
 		"jose": "latest",

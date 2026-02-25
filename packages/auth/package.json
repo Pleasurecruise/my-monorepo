@@ -19,6 +19,7 @@
 	"dependencies": {
 		"@better-fetch/fetch": "^1.1.21",
 		"@my-monorepo/db": "workspace:*",
+		"@my-monorepo/env": "workspace:*",
 		"@my-monorepo/utils": "workspace:*",
 		"better-auth": "latest"
 	},

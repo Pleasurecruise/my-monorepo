@@ -2,7 +2,7 @@
 
 ## Apps
 
-- [`@my-monorepo/api`](../apps/api) - Node.js runtime API using Hono + tRPC, with shared AI/logging/utilities. Dev server via `tsx watch`.
+- [`@my-monorepo/api`](../apps/api) - Node.js runtime API using Hono + tRPC, with shared AI/auth/env/logging/utilities. Dev server via `tsx watch`.
 - [`@my-monorepo/web`](../apps/web) - React app built with TanStack Router/React Query/TanStack Start on Vite.
 - [`@my-monorepo/tauri`](../apps/tauri) - Tauri v2 desktop app (Rust core) with a React + Vite frontend.
 - [`@my-monorepo/mobile`](../apps/mobile) - Expo (React Native) app using Expo Router.
@@ -24,7 +24,6 @@
 ```mermaid
 graph BT
     subgraph Packages
-        TSCONFIG[tsconfig]
         UTILS[utils]
         ENV[env]
         I18N[i18n]
@@ -42,15 +41,19 @@ graph BT
         MOBILE[mobile]
     end
 
-    TSCONFIG --> UTILS & ENV & I18N & UI & LOGGER & DB & AUTH & AI
-    UTILS --> AUTH & AI & API
-    ENV --> AUTH & API & WEB & TAURI
-    DB --> AUTH & API
-    LOGGER --> API
-    AI --> API
+    %% package → package
+    DB --> AUTH
+    UTILS --> AUTH & AI
+    ENV --> AUTH
+
+    %% packages → API
+    LOGGER & AI --> API
     AUTH --> API & WEB & TAURI
-    I18N --> WEB & TAURI & MOBILE
-    UI --> WEB & TAURI
+    UTILS & ENV --> API & WEB & TAURI
+
+    %% packages → WEB / TAURI / MOBILE
+    I18N & UI --> WEB & TAURI
+    I18N --> MOBILE
 ```
 
-> All packages depend on `tsconfig`. Apps use `api` as a devDependency for tRPC type inference.
+> All packages depend on `tsconfig` (omitted for clarity). Apps use `api` as a devDependency for tRPC type inference.

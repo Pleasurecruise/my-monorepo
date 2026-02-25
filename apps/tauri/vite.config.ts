@@ -10,6 +10,7 @@ export default defineConfig({
 	plugins: [react(), tsconfigPaths(), tailwindcss()],
 
 	envDir: "../../",
+	envPrefix: ["PUBLIC_"],
 
 	// Vite options tailored for Tauri development and only applied in `tauri dev` or `tauri build`
 	//

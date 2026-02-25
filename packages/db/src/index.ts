@@ -1,8 +1,11 @@
 import { PrismaClient } from "./generated/prisma/client.js";
 import { PrismaPg } from "@prisma/adapter-pg";
+import { env } from "@my-monorepo/env";
+
+const isProduction = process.env.NODE_ENV === "production";
 
 const adapter = new PrismaPg({
-	connectionString: process.env.DATABASE_URL!,
+	connectionString: env.DATABASE_URL,
 });
 
 const globalForPrisma = global as unknown as {
@@ -11,7 +14,7 @@ const globalForPrisma = global as unknown as {
 
 const prisma = globalForPrisma.prisma || new PrismaClient({ adapter });
 
-if (process.env.NODE_ENV !== "production") globalForPrisma.prisma = prisma;
+if (!isProduction) globalForPrisma.prisma = prisma;
 
 export default prisma;
 export { prisma };

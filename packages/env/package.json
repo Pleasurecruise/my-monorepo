@@ -13,7 +13,8 @@
 		"test": "vitest run"
 	},
 	"dependencies": {
-		"@my-monorepo/utils": "workspace:*"
+		"@t3-oss/env-core": "^0.13.10",
+		"zod": "latest"
 	},
 	"devDependencies": {
 		"@my-monorepo/tsconfig": "workspace:*"

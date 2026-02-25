@@ -21,7 +21,7 @@ function createBetterAuthClient(baseURL?: string) {
 /**
  * Pre-configured auth client.
  * Works when the client and API server share the same origin,
- * or when BETTER_AUTH_URL is set in the environment.
+ * or when PUBLIC_WEB_ORIGIN is set in the environment.
  */
 const authClient = createBetterAuthClient();
 

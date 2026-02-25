@@ -1,21 +1,23 @@
 import { createOpenAICompatible } from "@ai-sdk/openai-compatible";
+import { env } from "@my-monorepo/env";
 import { createPrefixedId } from "@my-monorepo/utils/ids";
 import { streamText } from "ai";
 
 import type { StreamChatOptions, StreamChatResult } from "./types.js";
 
-export const defaultChatModel = process.env.OPENAI_MODEL ?? "deepseek-ai/DeepSeek-V3";
+export const defaultChatModel = env.OPENAI_MODEL ?? "deepseek-ai/DeepSeek-V3";
 
-export const isAiConfigured = () =>
-	Boolean(process.env.OPENAI_API_KEY && process.env.OPENAI_API_URL);
+export const isAiConfigured = () => {
+	return Boolean(env.OPENAI_API_KEY && env.OPENAI_API_URL);
+};
 
 export const createStreamId = (prefix = "stream") => createPrefixedId(prefix);
 
 let provider: ReturnType<typeof createOpenAICompatible> | null = null;
 
 const getProvider = () => {
-	const apiKey = process.env.OPENAI_API_KEY;
-	const baseURL = process.env.OPENAI_API_URL;
+	const apiKey = env.OPENAI_API_KEY;
+	const baseURL = env.OPENAI_API_URL;
 
 	if (!apiKey) {
 		throw new Error("OPENAI_API_KEY is required");

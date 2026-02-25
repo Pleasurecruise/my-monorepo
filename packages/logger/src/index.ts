@@ -1,17 +1,18 @@
 import pino from "pino";
+import { env } from "@my-monorepo/env";
 
 export type { Logger } from "./types.js";
 
 /**
  * Check if we're in pretty mode
  */
-const isPretty = process.env.LOG_PRETTY === "true";
+const isPretty = env.LOG_PRETTY;
 
 /**
  * Create the base pino logger instance
  */
 const baseLogger = pino({
-	level: process.env.LOG_LEVEL ?? "info",
+	level: env.LOG_LEVEL ?? "info",
 	serializers: {
 		req: pino.stdSerializers.req,
 		res: pino.stdSerializers.res,

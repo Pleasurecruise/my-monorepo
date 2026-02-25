@@ -1,12 +1,15 @@
 import { betterAuth } from "better-auth";
 import { prismaAdapter } from "better-auth/adapters/prisma";
+import { env } from "@my-monorepo/env";
 import { sendEmail } from "@my-monorepo/utils/email";
 import prisma from "@my-monorepo/db";
 
 export const auth = betterAuth({
-	baseURL: process.env.BETTER_AUTH_URL,
-	secret: process.env.BETTER_AUTH_SECRET,
-	trustedOrigins: [process.env.BETTER_AUTH_URL, process.env.TAURI_URL].filter(Boolean) as string[],
+	baseURL: env.PUBLIC_API_ORIGIN,
+	secret: env.BETTER_AUTH_SECRET,
+	trustedOrigins: [env.PUBLIC_WEB_ORIGIN, env.PUBLIC_TAURI_ORIGIN, env.PUBLIC_API_ORIGIN].filter(
+		Boolean,
+	) as string[],
 
 	/** if no database is provided, the user data will be stored in memory.
 	 * Make sure to provide a database to persist user data **/
@@ -34,14 +37,22 @@ export const auth = betterAuth({
 	//     },
 	// },
 	socialProviders: {
-		github: {
-			clientId: process.env.GITHUB_CLIENT_ID!,
-			clientSecret: process.env.GITHUB_CLIENT_SECRET!,
-		},
-		google: {
-			clientId: process.env.GOOGLE_CLIENT_ID!,
-			clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
-		},
+		...(env.GITHUB_CLIENT_ID && env.GITHUB_CLIENT_SECRET
+			? {
+					github: {
+						clientId: env.GITHUB_CLIENT_ID,
+						clientSecret: env.GITHUB_CLIENT_SECRET,
+					},
+				}
+			: {}),
+		...(env.GOOGLE_CLIENT_ID && env.GOOGLE_CLIENT_SECRET
+			? {
+					google: {
+						clientId: env.GOOGLE_CLIENT_ID,
+						clientSecret: env.GOOGLE_CLIENT_SECRET,
+					},
+				}
+			: {}),
 	},
 	session: {
 		fields: {

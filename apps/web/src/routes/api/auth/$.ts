@@ -1,4 +1,3 @@
-import "@my-monorepo/env";
 import { auth } from "@my-monorepo/auth/server";
 import { createFileRoute } from "@tanstack/react-router";
 

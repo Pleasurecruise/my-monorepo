@@ -1,3 +1,4 @@
+import { env } from "@my-monorepo/env";
 import { createLoggerWithContext } from "@my-monorepo/logger";
 import nodemailer from "nodemailer";
 
@@ -11,19 +12,19 @@ export interface SendEmailOptions {
 }
 
 const transporter = nodemailer.createTransport({
-	host: process.env.MAIL_HOST,
-	port: Number(process.env.MAIL_PORT ?? 587),
-	secure: process.env.MAIL_SECURE === "true",
+	host: env.MAIL_HOST,
+	port: env.MAIL_PORT,
+	secure: env.MAIL_SECURE,
 	auth: {
-		user: process.env.MAIL_AUTH_USER,
-		pass: process.env.MAIL_AUTH_PASS,
+		user: env.MAIL_AUTH_USER,
+		pass: env.MAIL_AUTH_PASS,
 	},
 });
 
 export async function sendEmail({ to, subject, text, html }: SendEmailOptions) {
 	try {
 		const info = await transporter.sendMail({
-			from: process.env.MAIL_FROM,
+			from: env.MAIL_FROM,
 			to,
 			subject,
 			text,

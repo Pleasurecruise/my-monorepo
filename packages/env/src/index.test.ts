@@ -1,11 +1,10 @@
 import { describe, expect, it } from "vitest";
-import { schema } from "./schema.js";
+import { clientSchema, serverSchema as schema } from "./schema.js";
 
 describe("env schema", () => {
 	it("should validate a valid environment", () => {
 		const validEnv = {
 			DATABASE_URL: "postgresql://localhost:5432/db",
-			BETTER_AUTH_URL: "http://localhost:3000",
 			BETTER_AUTH_SECRET: "secret",
 		};
 
@@ -25,12 +24,36 @@ describe("env schema", () => {
 	it("should use default values", () => {
 		const minimalEnv = {
 			DATABASE_URL: "postgresql://localhost:5432/db",
-			BETTER_AUTH_URL: "http://localhost:3000",
 			BETTER_AUTH_SECRET: "secret",
 		};
 
 		const result = schema.parse(minimalEnv);
 		expect(result.LOG_LEVEL).toBe("info");
-		expect(result.PORT).toBe(5173);
+		expect(result.PUBLIC_API_ORIGIN).toBe("http://localhost:5173");
+		expect(result.PUBLIC_WEB_ORIGIN).toBe("http://localhost:3000");
+	});
+
+	it("should coerce boolean values from runtime strings", () => {
+		const result = schema.parse({
+			DATABASE_URL: "postgresql://localhost:5432/db",
+			BETTER_AUTH_SECRET: "secret",
+			LOG_PRETTY: "true",
+			MAIL_SECURE: "false",
+		});
+
+		expect(result.LOG_PRETTY).toBe(true);
+		expect(result.MAIL_SECURE).toBe(false);
+	});
+});
+
+describe("client env schema", () => {
+	it("should only include public client variables", () => {
+		const result = clientSchema.parse({
+			PUBLIC_API_ORIGIN: "http://localhost:5173",
+			PUBLIC_WEB_ORIGIN: "http://localhost:3000",
+		});
+
+		expect(result.PUBLIC_API_ORIGIN).toBe("http://localhost:5173");
+		expect(result.PUBLIC_WEB_ORIGIN).toBe("http://localhost:3000");
 	});
 });

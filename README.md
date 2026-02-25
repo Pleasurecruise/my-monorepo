@@ -2,8 +2,6 @@
 
 My monorepo used to start everything :-)
 
-Huge thanks to [midday](https://github.com/midday-ai/midday) !!!
-
 ## Tech stack
 
 The toolchain used here is sourced from the [VoidZero](https://voidzero.dev/about) ecosystem.
@@ -25,3 +23,8 @@ The toolchain used here is sourced from the [VoidZero](https://voidzero.dev/abou
 - [x] Add authentication package
 - [x] Add database package
 - etc.
+
+## References
+
+- [create-t3-turbo](https://github.com/t3-oss/create-t3-turbo)
+- [midday](https://github.com/midday-ai/midday)
