@@ -33,13 +33,17 @@
 		"react": "latest",
 		"react-dom": "latest",
 		"rolldown": "latest",
+		"simple-git-hooks": "latest",
 		"turbo": "latest",
 		"typescript": "latest",
 		"vite": "latest",
 		"vite-tsconfig-paths": "latest",
 		"vitest": "latest"
 	},
-	"packageManager": "pnpm@10.30.2",
+	"packageManager": "pnpm@10.30.3",
+	"simple-git-hooks": {
+		"pre-commit": "pnpm run precommit"
+	},
 	"pnpm": {
 		"overrides": {
 			"inflight": "1.0.6",

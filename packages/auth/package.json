@@ -17,6 +17,7 @@
 		"test": "vitest run"
 	},
 	"dependencies": {
+		"@better-auth/prisma-adapter": "latest",
 		"@better-fetch/fetch": "^1.1.21",
 		"@my-monorepo/db": "workspace:*",
 		"@my-monorepo/env": "workspace:*",

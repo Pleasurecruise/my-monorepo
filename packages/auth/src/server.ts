@@ -1,5 +1,5 @@
 import { betterAuth } from "better-auth";
-import { prismaAdapter } from "better-auth/adapters/prisma";
+import { prismaAdapter } from "@better-auth/prisma-adapter";
 import { env } from "@my-monorepo/env";
 import { sendEmail } from "@my-monorepo/utils/email";
 import prisma from "@my-monorepo/db";
