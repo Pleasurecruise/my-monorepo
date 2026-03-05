@@ -57,7 +57,7 @@ importers:
         specifier: latest
         version: 1.0.0-rc.6
       simple-git-hooks:
-        specifier: ^2.13.1
+        specifier: latest
         version: 2.13.1
       turbo:
         specifier: latest
@@ -251,7 +251,7 @@ importers:
     dependencies:
       '@ai-sdk/openai-compatible':
         specifier: latest
-        version: 2.0.33(zod@4.3.6)
+        version: 2.0.34(zod@4.3.6)
       '@my-monorepo/env':
         specifier: workspace:*
         version: link:../env
@@ -260,7 +260,7 @@ importers:
         version: link:../utils
       ai:
         specifier: latest
-        version: 6.0.114(zod@4.3.6)
+        version: 6.0.115(zod@4.3.6)
     devDependencies:
       '@my-monorepo/tsconfig':
         specifier: workspace:*
@@ -424,20 +424,20 @@ importers:
 
 packages:
 
-  '@ai-sdk/gateway@3.0.64':
-    resolution: {integrity: sha512-rLW+uT0MmUEzxVTI1GC2sYrZTXd8RZ8rvbEVTqzSZvT1d8/+cT8ZNxI8dFssyrmSrvUw81jjpbfDuHST4lNLPA==}
+  '@ai-sdk/gateway@3.0.65':
+    resolution: {integrity: sha512-oGqhn+zjJZy2wHkh3YzGOVId0xPzV0oe69AbrzB4cjIqOuE5jQJMpq2P8iJlf42ixQz0K1bFmXLrLj0NUIzNWQ==}
     engines: {node: '>=18'}
     peerDependencies:
       zod: ^3.25.76 || ^4.1.8
 
-  '@ai-sdk/openai-compatible@2.0.33':
-    resolution: {integrity: sha512-HwptqeUS4vtDyjSSjmKCQExjoQMwPVq0C4pHH18i7c+3CQ0QN81HLvz3BdpULo0n/UtdQwTNISRqx3G5miPZhw==}
+  '@ai-sdk/openai-compatible@2.0.34':
+    resolution: {integrity: sha512-gBtASIruDr6eMtOWNkt63gf+HXLq5g5TKWa5Me+CHb43P64O265pixCAjQKmbyS5EWxUlsiQ/P9bILrbAyRV0A==}
     engines: {node: '>=18'}
     peerDependencies:
       zod: ^3.25.76 || ^4.1.8
 
-  '@ai-sdk/provider-utils@4.0.17':
-    resolution: {integrity: sha512-oyCeFINTYK0B8ZGUBiQc05G5vytPlKSmTTtm19xfJuUgoi8zkvvRcoPQci4mSnyfpPn2XSFFDfsALG8uGcapfg==}
+  '@ai-sdk/provider-utils@4.0.18':
+    resolution: {integrity: sha512-dJ55zAzimyDTr1tHgalxg0VqNKGyJV04svu26xv5G1NDFTgFeG/Yr5CS9l62N923cQTv94OOtNWZ7XxwKIYhqw==}
     engines: {node: '>=18'}
     peerDependencies:
       zod: ^3.25.76 || ^4.1.8
@@ -1959,15 +1959,6 @@ packages:
       '@types/react-dom':
         optional: true
 
-  '@radix-ui/react-slot@1.2.0':
-    resolution: {integrity: sha512-ujc+V6r0HNDviYqIK3rW4ffgYiZ8g5DEHrGJVk4x7kTlLXRDILnKX9vAUYeIsLOoDpDJ0ujpqMkjH4w2ofuo6w==}
-    peerDependencies:
-      '@types/react': '*'
-      react: ^16.8 || ^17.0 || ^18.0 || ^19.0 || ^19.0.0-rc
-    peerDependenciesMeta:
-      '@types/react':
-        optional: true
-
   '@radix-ui/react-slot@1.2.3':
     resolution: {integrity: sha512-aeNmHnBxbi2St0au6VBVC7JXFlhLlOnvIIlePNniyUNAClzmtAUEY8/pBiK3iHjufOlwA+c20/8jngo7xcrg8A==}
     peerDependencies:
@@ -2912,8 +2903,8 @@ packages:
     resolution: {integrity: sha512-MnA+YT8fwfJPgBx3m60MNqakm30XOkyIoH1y6huTQvC0PwZG7ki8NacLBcrPbNoo8vEZy7Jpuk7+jMO+CUovTQ==}
     engines: {node: '>= 14'}
 
-  ai@6.0.114:
-    resolution: {integrity: sha512-X0nj5dZ/jJbOVrs5cd65ADhkbbkBEERMxs32c4PqNaXuS5JlJFxivUA9KicOcw+D1EKjrvEY6f1GrlSPiSD8zQ==}
+  ai@6.0.115:
+    resolution: {integrity: sha512-UVHtXuvxu0v1z5Lhq4PN33PBXV1J4H7haX6+RY9ZB7OfpOlC6ousazInKgutW0IqBtM8KpQ6bid9nQfk1zhX5g==}
     engines: {node: '>=18'}
     peerDependencies:
       zod: ^3.25.76 || ^4.1.8
@@ -5776,20 +5767,20 @@ packages:
 
 snapshots:
 
-  '@ai-sdk/gateway@3.0.64(zod@4.3.6)':
+  '@ai-sdk/gateway@3.0.65(zod@4.3.6)':
     dependencies:
       '@ai-sdk/provider': 3.0.8
-      '@ai-sdk/provider-utils': 4.0.17(zod@4.3.6)
+      '@ai-sdk/provider-utils': 4.0.18(zod@4.3.6)
       '@vercel/oidc': 3.1.0
       zod: 4.3.6
 
-  '@ai-sdk/openai-compatible@2.0.33(zod@4.3.6)':
+  '@ai-sdk/openai-compatible@2.0.34(zod@4.3.6)':
     dependencies:
       '@ai-sdk/provider': 3.0.8
-      '@ai-sdk/provider-utils': 4.0.17(zod@4.3.6)
+      '@ai-sdk/provider-utils': 4.0.18(zod@4.3.6)
       zod: 4.3.6
 
-  '@ai-sdk/provider-utils@4.0.17(zod@4.3.6)':
+  '@ai-sdk/provider-utils@4.0.18(zod@4.3.6)':
     dependencies:
       '@ai-sdk/provider': 3.0.8
       '@standard-schema/spec': 1.1.0
@@ -7440,14 +7431,14 @@ snapshots:
       '@types/react': 19.2.14
       '@types/react-dom': 19.2.3(@types/react@19.2.14)
 
-  '@radix-ui/react-slot@1.2.0(@types/react@19.2.14)(react@19.1.0)':
+  '@radix-ui/react-slot@1.2.3(@types/react@19.2.14)(react@19.1.0)':
     dependencies:
       '@radix-ui/react-compose-refs': 1.1.2(@types/react@19.2.14)(react@19.1.0)
       react: 19.1.0
     optionalDependencies:
       '@types/react': 19.2.14
 
-  '@radix-ui/react-slot@1.2.3(@types/react@19.2.14)(react@19.1.0)':
+  '@radix-ui/react-slot@1.2.4(@types/react@19.2.14)(react@19.1.0)':
     dependencies:
       '@radix-ui/react-compose-refs': 1.1.2(@types/react@19.2.14)(react@19.1.0)
       react: 19.1.0
@@ -8406,11 +8397,11 @@ snapshots:
 
   agent-base@7.1.4: {}
 
-  ai@6.0.114(zod@4.3.6):
+  ai@6.0.115(zod@4.3.6):
     dependencies:
-      '@ai-sdk/gateway': 3.0.64(zod@4.3.6)
+      '@ai-sdk/gateway': 3.0.65(zod@4.3.6)
       '@ai-sdk/provider': 3.0.8
-      '@ai-sdk/provider-utils': 4.0.17(zod@4.3.6)
+      '@ai-sdk/provider-utils': 4.0.18(zod@4.3.6)
       '@opentelemetry/api': 1.9.0
       zod: 4.3.6
 
@@ -9199,7 +9190,7 @@ snapshots:
       '@expo/log-box': 55.0.7(@expo/dom-webview@55.0.3)(expo@55.0.4)(react-native@0.81.5(@babel/core@7.29.0)(@types/react@19.2.14)(react@19.1.0))(react@19.1.0)
       '@expo/metro-runtime': 6.1.2(expo@55.0.4)(react-dom@19.1.0(react@19.1.0))(react-native@0.81.5(@babel/core@7.29.0)(@types/react@19.2.14)(react@19.1.0))(react@19.1.0)
       '@expo/schema-utils': 55.0.2
-      '@radix-ui/react-slot': 1.2.0(@types/react@19.2.14)(react@19.1.0)
+      '@radix-ui/react-slot': 1.2.4(@types/react@19.2.14)(react@19.1.0)
       '@radix-ui/react-tabs': 1.1.13(@types/react-dom@19.2.3(@types/react@19.2.14))(@types/react@19.2.14)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
       '@react-navigation/bottom-tabs': 7.10.1(@react-navigation/native@7.1.28(react-native@0.81.5(@babel/core@7.29.0)(@types/react@19.2.14)(react@19.1.0))(react@19.1.0))(react-native-safe-area-context@5.6.2(react-native@0.81.5(@babel/core@7.29.0)(@types/react@19.2.14)(react@19.1.0))(react@19.1.0))(react-native-screens@4.16.0(react-native@0.81.5(@babel/core@7.29.0)(@types/react@19.2.14)(react@19.1.0))(react@19.1.0))(react-native@0.81.5(@babel/core@7.29.0)(@types/react@19.2.14)(react@19.1.0))(react@19.1.0)
       '@react-navigation/native': 7.1.28(react-native@0.81.5(@babel/core@7.29.0)(@types/react@19.2.14)(react@19.1.0))(react@19.1.0)
