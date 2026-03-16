@@ -3,7 +3,6 @@
 	"private": true,
 	"main": "expo-router/entry",
 	"version": "1.0.0",
-	"type": "module",
 	"scripts": {
 		"dev": "expo start",
 		"dev:android": "expo start --android",
@@ -21,22 +20,34 @@
 		"ios": "expo run:ios"
 	},
 	"dependencies": {
+		"@better-auth/expo": "latest",
+		"@expo/log-box": "latest",
+		"@expo/metro-runtime": "latest",
 		"@my-monorepo/i18n": "workspace:*",
 		"@my-monorepo/utils": "workspace:*",
 		"@tanstack/react-query": "latest",
 		"@trpc/client": "latest",
 		"@trpc/tanstack-react-query": "latest",
+		"better-auth": "latest",
 		"expo": "latest",
+		"expo-constants": "latest",
 		"expo-linking": "latest",
 		"expo-localization": "latest",
+		"expo-network": "latest",
 		"expo-router": "latest",
-		"react": "19.1.0",
-		"react-dom": "19.1.0",
-		"react-native": "0.81.5",
-		"react-native-safe-area-context": "5.6.2",
-		"react-native-screens": "4.16.0"
+		"expo-secure-store": "latest",
+		"expo-web-browser": "latest",
+		"nativewind": "4.2.3",
+		"react": "19.2.0",
+		"react-dom": "19.2.0",
+		"react-native": "0.83.2",
+		"react-native-css-interop": "latest",
+		"react-native-reanimated": "4.2.1",
+		"react-native-safe-area-context": "~5.6.2",
+		"react-native-screens": "~4.23.0"
 	},
 	"devDependencies": {
-		"@my-monorepo/api": "workspace:*"
+		"@my-monorepo/api": "workspace:*",
+		"tailwindcss": "^3.4.17"
 	}
 }

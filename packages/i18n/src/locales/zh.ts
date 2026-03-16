@@ -10,6 +10,7 @@ export default {
 		edit: "编辑",
 		search: "搜索",
 		noData: "暂无数据",
+		back: "返回",
 	},
 	nav: {
 		home: "首页",
@@ -20,5 +21,17 @@ export default {
 	settings: {
 		language: "语言",
 		theme: "主题",
+	},
+	auth: {
+		login: "登录",
+		logout: "退出登录",
+		loginSubtitle: "登录您的账号",
+		email: "邮箱",
+		emailPlaceholder: "your@email.com",
+		password: "密码",
+		passwordPlaceholder: "请输入密码",
+		fillRequired: "请填写邮箱和密码",
+		loginFailed: "登录失败，请重试",
+		loggedInAs: "当前登录",
 	},
 } as const;

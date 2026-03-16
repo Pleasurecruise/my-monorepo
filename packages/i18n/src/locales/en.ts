@@ -10,6 +10,7 @@ export default {
 		edit: "Edit",
 		search: "Search",
 		noData: "No data",
+		back: "Back",
 	},
 	nav: {
 		home: "Home",
@@ -20,5 +21,17 @@ export default {
 	settings: {
 		language: "Language",
 		theme: "Theme",
+	},
+	auth: {
+		login: "Login",
+		logout: "Logout",
+		loginSubtitle: "Sign in to your account",
+		email: "Email",
+		emailPlaceholder: "your@email.com",
+		password: "Password",
+		passwordPlaceholder: "Password",
+		fillRequired: "Please fill in email and password",
+		loginFailed: "Login failed, please try again",
+		loggedInAs: "Logged in as",
 	},
 } as const;

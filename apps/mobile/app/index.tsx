@@ -1,13 +1,17 @@
-import { View, Text, Pressable, StyleSheet, useColorScheme } from "react-native";
+import { View, Text, Pressable, useColorScheme } from "react-native";
 import { useQuery } from "@tanstack/react-query";
+import { useRouter } from "expo-router";
 import { trpc } from "@/lib/trpc";
 import { setLanguage, useTranslation, getCurrentLanguage } from "@/lib/i18n";
 import { useTheme } from "@/lib/theme";
+import { useSession, signOut } from "@/lib/auth";
 
 export default function Home() {
 	const { t } = useTranslation();
 	const { theme, setTheme } = useTheme();
 	const systemColorScheme = useColorScheme();
+	const router = useRouter();
+	const { data: session } = useSession();
 	const { data: helloData, isLoading, isError } = useQuery(trpc.hello.greet.queryOptions());
 
 	const isDark = theme === "system" ? systemColorScheme === "dark" : theme === "dark";
@@ -18,185 +22,113 @@ export default function Home() {
 	};
 
 	return (
-		<View style={[styles.container, isDark && styles.containerDark]}>
-			<View style={[styles.card, isDark && styles.cardDark]}>
-				<Text style={[styles.cardTitle, isDark && styles.textDark]}>i18n Test</Text>
-				<Text style={[styles.cardText, isDark && styles.textDark]}>{t("common.welcome")}</Text>
+		<View
+			className={`flex-1 justify-center items-center gap-5 p-4 ${isDark ? "bg-neutral-900" : "bg-white"}`}
+		>
+			{/* i18n */}
+			<View
+				className={`w-full p-4 rounded-xl border ${isDark ? "bg-neutral-800 border-neutral-700" : "bg-white border-neutral-200"}`}
+			>
+				<Text className={`text-lg font-bold mb-2 ${isDark ? "text-white" : "text-black"}`}>
+					i18n Test
+				</Text>
+				<Text className={`text-base mb-2 ${isDark ? "text-white" : "text-black"}`}>
+					{t("common.welcome")}
+				</Text>
 				<Pressable
-					style={({ pressed }) => [styles.button, pressed && styles.buttonPressed]}
+					className="bg-blue-500 active:opacity-70 px-6 py-3 rounded-lg"
 					onPress={toggleLanguage}
 				>
-					<Text style={styles.buttonText}>
+					<Text className="text-white text-base font-semibold text-center">
 						{t("settings.language")}: {getCurrentLanguage().toUpperCase()}
 					</Text>
 				</Pressable>
 			</View>
 
-			<View style={[styles.card, isDark && styles.cardDark]}>
-				<Text style={[styles.cardTitle, isDark && styles.textDark]}>Theme Test</Text>
-				<View style={styles.buttonRow}>
-					<Pressable
-						style={({ pressed }) => [
-							styles.themeButton,
-							isDark && styles.themeButtonDark,
-							theme === "light" && styles.themeButtonActive,
-							pressed && styles.buttonPressed,
-						]}
-						onPress={() => setTheme("light")}
-					>
-						<Text
-							style={[
-								styles.themeButtonText,
-								isDark && styles.themeButtonTextDark,
-								theme === "light" && styles.themeButtonTextActive,
-							]}
+			{/* Theme */}
+			<View
+				className={`w-full p-4 rounded-xl border ${isDark ? "bg-neutral-800 border-neutral-700" : "bg-white border-neutral-200"}`}
+			>
+				<Text className={`text-lg font-bold mb-2 ${isDark ? "text-white" : "text-black"}`}>
+					Theme Test
+				</Text>
+				<View className="flex-row gap-2">
+					{(["light", "dark", "system"] as const).map((t) => (
+						<Pressable
+							key={t}
+							className={`flex-1 py-2 rounded-lg border active:opacity-70 ${
+								theme === t
+									? "bg-blue-500 border-blue-500"
+									: isDark
+										? "bg-neutral-700 border-neutral-600"
+										: "bg-white border-neutral-300"
+							}`}
+							onPress={() => setTheme(t)}
 						>
-							Light
-						</Text>
-					</Pressable>
-					<Pressable
-						style={({ pressed }) => [
-							styles.themeButton,
-							isDark && styles.themeButtonDark,
-							theme === "dark" && styles.themeButtonActive,
-							pressed && styles.buttonPressed,
-						]}
-						onPress={() => setTheme("dark")}
-					>
-						<Text
-							style={[
-								styles.themeButtonText,
-								isDark && styles.themeButtonTextDark,
-								theme === "dark" && styles.themeButtonTextActive,
-							]}
-						>
-							Dark
-						</Text>
-					</Pressable>
-					<Pressable
-						style={({ pressed }) => [
-							styles.themeButton,
-							isDark && styles.themeButtonDark,
-							theme === "system" && styles.themeButtonActive,
-							pressed && styles.buttonPressed,
-						]}
-						onPress={() => setTheme("system")}
-					>
-						<Text
-							style={[
-								styles.themeButtonText,
-								isDark && styles.themeButtonTextDark,
-								theme === "system" && styles.themeButtonTextActive,
-							]}
-						>
-							System
-						</Text>
-					</Pressable>
+							<Text
+								className={`text-sm font-semibold text-center capitalize ${
+									theme === t ? "text-white" : isDark ? "text-white" : "text-neutral-700"
+								}`}
+							>
+								{t}
+							</Text>
+						</Pressable>
+					))}
 				</View>
 			</View>
 
-			<View style={[styles.card, isDark && styles.cardDark]}>
-				<Text style={[styles.cardTitle, isDark && styles.textDark]}>tRPC Test</Text>
+			{/* tRPC */}
+			<View
+				className={`w-full p-4 rounded-xl border ${isDark ? "bg-neutral-800 border-neutral-700" : "bg-white border-neutral-200"}`}
+			>
+				<Text className={`text-lg font-bold mb-2 ${isDark ? "text-white" : "text-black"}`}>
+					tRPC Test
+				</Text>
 				{isLoading ? (
-					<Text style={[styles.cardText, isDark && styles.textDark]}>{t("common.loading")}</Text>
+					<Text className={`text-base ${isDark ? "text-white" : "text-black"}`}>
+						{t("common.loading")}
+					</Text>
 				) : isError ? (
-					<Text style={styles.errorText}>{t("common.error")} - API not running?</Text>
+					<Text className="text-base text-red-500">{t("common.error")} - API not running?</Text>
 				) : (
-					<Text style={[styles.cardText, isDark && styles.textDark]}>{helloData?.message}</Text>
+					<Text className={`text-base ${isDark ? "text-white" : "text-black"}`}>
+						{helloData?.message}
+					</Text>
+				)}
+			</View>
+
+			{/* Auth */}
+			<View
+				className={`w-full p-4 rounded-xl border ${isDark ? "bg-neutral-800 border-neutral-700" : "bg-white border-neutral-200"}`}
+			>
+				<Text className={`text-lg font-bold mb-2 ${isDark ? "text-white" : "text-black"}`}>
+					Auth
+				</Text>
+				{session?.user ? (
+					<View className="gap-2">
+						<Text className={`text-sm ${isDark ? "text-neutral-300" : "text-neutral-600"}`}>
+							{t("auth.loggedInAs")}: {session.user.email}
+						</Text>
+						<Pressable
+							className="bg-red-500 active:opacity-70 px-4 py-2 rounded-lg mt-1"
+							onPress={() => signOut()}
+						>
+							<Text className="text-white text-sm font-semibold text-center">
+								{t("auth.logout")}
+							</Text>
+						</Pressable>
+					</View>
+				) : (
+					<Pressable
+						className="bg-blue-500 active:opacity-70 px-4 py-3 rounded-lg"
+						onPress={() => router.push("/login")}
+					>
+						<Text className="text-white text-base font-semibold text-center">
+							{t("auth.login")}
+						</Text>
+					</Pressable>
 				)}
 			</View>
 		</View>
 	);
 }
-
-const styles = StyleSheet.create({
-	container: {
-		flex: 1,
-		justifyContent: "center",
-		alignItems: "center",
-		gap: 20,
-		padding: 16,
-		backgroundColor: "#fff",
-	},
-	containerDark: {
-		backgroundColor: "#1a1a1a",
-	},
-	card: {
-		width: "100%",
-		padding: 16,
-		borderWidth: 1,
-		borderColor: "#ccc",
-		borderRadius: 8,
-		backgroundColor: "#fff",
-	},
-	cardDark: {
-		backgroundColor: "#2a2a2a",
-		borderColor: "#444",
-	},
-	cardTitle: {
-		fontSize: 18,
-		fontWeight: "bold",
-		marginBottom: 8,
-		color: "#000",
-	},
-	cardText: {
-		fontSize: 16,
-		color: "#000",
-	},
-	textDark: {
-		color: "#fff",
-	},
-	errorText: {
-		fontSize: 16,
-		color: "#ef4444",
-	},
-	button: {
-		backgroundColor: "#007AFF",
-		paddingHorizontal: 24,
-		paddingVertical: 12,
-		borderRadius: 8,
-		marginTop: 8,
-	},
-	buttonPressed: {
-		opacity: 0.7,
-	},
-	buttonText: {
-		color: "#fff",
-		fontSize: 16,
-		fontWeight: "600",
-		textAlign: "center",
-	},
-	buttonRow: {
-		flexDirection: "row",
-		gap: 8,
-	},
-	themeButton: {
-		flex: 1,
-		paddingHorizontal: 16,
-		paddingVertical: 10,
-		borderRadius: 8,
-		borderWidth: 1,
-		borderColor: "#ccc",
-		alignItems: "center",
-		backgroundColor: "#fff",
-	},
-	themeButtonDark: {
-		backgroundColor: "#2a2a2a",
-		borderColor: "#444",
-	},
-	themeButtonActive: {
-		backgroundColor: "#007AFF",
-		borderColor: "#007AFF",
-	},
-	themeButtonText: {
-		fontSize: 14,
-		fontWeight: "600",
-		color: "#333",
-	},
-	themeButtonTextDark: {
-		color: "#fff",
-	},
-	themeButtonTextActive: {
-		color: "#fff",
-	},
-});
