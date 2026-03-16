@@ -28,17 +28,12 @@
 		"@typescript/native-preview": "latest",
 		"@vitejs/plugin-react": "latest",
 		"@vitest/coverage-v8": "latest",
-		"oxfmt": "latest",
-		"oxlint": "latest",
 		"react": "latest",
 		"react-dom": "latest",
-		"rolldown": "latest",
 		"simple-git-hooks": "latest",
 		"turbo": "latest",
 		"typescript": "latest",
-		"vite": "latest",
-		"vite-tsconfig-paths": "latest",
-		"vitest": "latest"
+		"vite-plus": "latest"
 	},
 	"packageManager": "pnpm@10.32.1",
 	"simple-git-hooks": {

@@ -1,4 +1,4 @@
-import { describe, it, expect } from "vitest";
+import { describe, it, expect } from "vite-plus/test";
 import { appRouter } from "@my-monorepo/api/routers";
 import { t, changeLanguage, getCurrentLanguage, supportedLanguages } from "@my-monorepo/i18n";
 

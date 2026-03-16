@@ -1,6 +1,7 @@
 {
 	"extends": "@my-monorepo/tsconfig/react-app.json",
 	"compilerOptions": {
+		"allowArbitraryExtensions": true,
 		"paths": {
 			"@/*": ["./src/*"],
 			"@my-monorepo/ui/*": ["../../packages/ui/src/*"]

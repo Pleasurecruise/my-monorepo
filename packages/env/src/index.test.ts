@@ -1,4 +1,4 @@
-import { describe, expect, it } from "vitest";
+import { describe, expect, it } from "vite-plus/test";
 import { clientSchema, serverSchema as schema } from "./schema.js";
 
 describe("env schema", () => {

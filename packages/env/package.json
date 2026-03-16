@@ -10,7 +10,7 @@
 	},
 	"scripts": {
 		"check-types": "tsgo --noEmit",
-		"test": "vitest run"
+		"test": "vp test --run"
 	},
 	"dependencies": {
 		"@t3-oss/env-core": "^0.13.10",

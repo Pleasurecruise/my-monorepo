@@ -7,16 +7,16 @@
 		".": "./src/index.ts"
 	},
 	"scripts": {
-		"lint": "oxlint .",
-		"lint:fix": "oxlint --fix .",
-		"format": "oxfmt",
-		"format:check": "oxfmt --check",
+		"lint": "vp lint",
+		"lint:fix": "vp lint --fix",
+		"format": "vp fmt",
+		"format:check": "vp fmt --check",
 		"check-types": "tsgo --noEmit",
 		"db:generate": "prisma generate",
 		"db:push": "prisma db push",
 		"db:migrate": "prisma migrate dev",
 		"db:studio": "prisma studio",
-		"test": "vitest run"
+		"test": "vp test --run"
 	},
 	"dependencies": {
 		"@my-monorepo/env": "workspace:*",

@@ -1,4 +1,4 @@
-import { describe, expect, it } from "vitest";
+import { describe, expect, it } from "vite-plus/test";
 import { prisma } from "./index.js";
 
 describe("db exports", () => {

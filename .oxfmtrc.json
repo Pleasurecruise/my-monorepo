@@ -1,7 +1,0 @@
-{
-	"$schema": "./node_modules/oxfmt/configuration_schema.json",
-	"useTabs": true,
-	"singleQuote": false,
-	"experimentalSortPackageJson": false,
-	"ignorePatterns": ["**/routeTree.gen.ts"]
-}

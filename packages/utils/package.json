@@ -12,13 +12,13 @@
 		"./validators": "./src/validators.ts"
 	},
 	"scripts": {
-		"lint": "oxlint .",
-		"lint:fix": "oxlint --fix .",
-		"format": "oxfmt",
-		"format:check": "oxfmt --check",
+		"lint": "vp lint",
+		"lint:fix": "vp lint --fix",
+		"format": "vp fmt",
+		"format:check": "vp fmt --check",
 		"check-types": "tsgo --noEmit",
-		"test": "vitest run",
-		"test:coverage": "vitest run --coverage"
+		"test": "vp test --run",
+		"test:coverage": "vp test --run --coverage"
 	},
 	"dependencies": {
 		"@my-monorepo/env": "workspace:*",
