@@ -21,6 +21,6 @@ export default defineConfig({
 		useTabs: true,
 		singleQuote: false,
 		experimentalSortPackageJson: false,
-		ignorePatterns: ["**/routeTree.gen.ts"],
+		ignorePatterns: ["**/routeTree.gen.ts", "**/dist/**"],
 	},
 });

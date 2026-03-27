@@ -1,14 +1,15 @@
-import { useState } from "react";
+import { useColorScheme } from "nativewind";
 
 export type Theme = "light" | "dark" | "system";
 
-interface UseThemeReturn {
-	theme: Theme;
-	setTheme: (theme: Theme) => void;
-}
+export { THEME, NAV_THEME } from "@my-monorepo/ui-native/lib/theme";
 
-export function useTheme(): UseThemeReturn {
-	const [theme, setTheme] = useState<Theme>("system");
+export function useTheme() {
+	const colorSchemeResult = useColorScheme();
 
-	return { theme, setTheme };
+	return {
+		theme: colorSchemeResult.colorScheme as Theme,
+		setTheme: (theme: Parameters<typeof colorSchemeResult.setColorScheme>[0]) =>
+			colorSchemeResult.setColorScheme(theme),
+	};
 }

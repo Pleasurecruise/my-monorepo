@@ -1,0 +1,19 @@
+{
+	"$schema": "https://ui.shadcn.com/schema.json",
+	"style": "default",
+	"rsc": false,
+	"tsx": true,
+	"tailwind": {
+		"config": "",
+		"css": "src/styles/globals.css",
+		"baseColor": "neutral",
+		"cssVariables": true
+	},
+	"aliases": {
+		"components": "@my-monorepo/ui-native/components/ui",
+		"utils": "@my-monorepo/ui-native/lib/utils",
+		"ui": "@my-monorepo/ui-native/components/ui",
+		"lib": "@my-monorepo/ui-native/lib",
+		"hooks": "@my-monorepo/ui-native/hooks"
+	}
+}

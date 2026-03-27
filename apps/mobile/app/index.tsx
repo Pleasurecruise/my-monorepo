@@ -1,20 +1,25 @@
-import { View, Text, Pressable, useColorScheme } from "react-native";
+import { View } from "react-native";
 import { useQuery } from "@tanstack/react-query";
 import { useRouter } from "expo-router";
 import { trpc } from "@/lib/trpc";
 import { setLanguage, useTranslation, getCurrentLanguage } from "@/lib/i18n";
 import { useTheme } from "@/lib/theme";
 import { useSession, signOut } from "@/lib/auth";
+import { Button } from "@my-monorepo/ui-native/components/ui/button";
+import {
+	Card,
+	CardContent,
+	CardHeader,
+	CardTitle,
+} from "@my-monorepo/ui-native/components/ui/card";
+import { Text } from "@my-monorepo/ui-native/components/ui/text";
 
 export default function Home() {
 	const { t } = useTranslation();
 	const { theme, setTheme } = useTheme();
-	const systemColorScheme = useColorScheme();
 	const router = useRouter();
 	const { data: session } = useSession();
 	const { data: helloData, isLoading, isError } = useQuery(trpc.hello.greet.queryOptions());
-
-	const isDark = theme === "system" ? systemColorScheme === "dark" : theme === "dark";
 
 	const toggleLanguage = () => {
 		const current = getCurrentLanguage();
@@ -22,113 +27,81 @@ export default function Home() {
 	};
 
 	return (
-		<View
-			className={`flex-1 justify-center items-center gap-5 p-4 ${isDark ? "bg-neutral-900" : "bg-white"}`}
-		>
+		<View className="flex-1 justify-center items-center gap-5 p-4 bg-background">
 			{/* i18n */}
-			<View
-				className={`w-full p-4 rounded-xl border ${isDark ? "bg-neutral-800 border-neutral-700" : "bg-white border-neutral-200"}`}
-			>
-				<Text className={`text-lg font-bold mb-2 ${isDark ? "text-white" : "text-black"}`}>
-					i18n Test
-				</Text>
-				<Text className={`text-base mb-2 ${isDark ? "text-white" : "text-black"}`}>
-					{t("common.welcome")}
-				</Text>
-				<Pressable
-					className="bg-blue-500 active:opacity-70 px-6 py-3 rounded-lg"
-					onPress={toggleLanguage}
-				>
-					<Text className="text-white text-base font-semibold text-center">
-						{t("settings.language")}: {getCurrentLanguage().toUpperCase()}
-					</Text>
-				</Pressable>
-			</View>
+			<Card className="w-full">
+				<CardHeader>
+					<CardTitle>i18n Test</CardTitle>
+				</CardHeader>
+				<CardContent className="gap-3">
+					<Text>{t("common.welcome")}</Text>
+					<Button onPress={toggleLanguage}>
+						<Text>
+							{t("settings.language")}: {getCurrentLanguage().toUpperCase()}
+						</Text>
+					</Button>
+				</CardContent>
+			</Card>
 
 			{/* Theme */}
-			<View
-				className={`w-full p-4 rounded-xl border ${isDark ? "bg-neutral-800 border-neutral-700" : "bg-white border-neutral-200"}`}
-			>
-				<Text className={`text-lg font-bold mb-2 ${isDark ? "text-white" : "text-black"}`}>
-					Theme Test
-				</Text>
-				<View className="flex-row gap-2">
-					{(["light", "dark", "system"] as const).map((t) => (
-						<Pressable
-							key={t}
-							className={`flex-1 py-2 rounded-lg border active:opacity-70 ${
-								theme === t
-									? "bg-blue-500 border-blue-500"
-									: isDark
-										? "bg-neutral-700 border-neutral-600"
-										: "bg-white border-neutral-300"
-							}`}
-							onPress={() => setTheme(t)}
-						>
-							<Text
-								className={`text-sm font-semibold text-center capitalize ${
-									theme === t ? "text-white" : isDark ? "text-white" : "text-neutral-700"
-								}`}
+			<Card className="w-full">
+				<CardHeader>
+					<CardTitle>Theme Test</CardTitle>
+				</CardHeader>
+				<CardContent>
+					<View className="flex-row gap-2">
+						{(["light", "dark", "system"] as const).map((option) => (
+							<Button
+								key={option}
+								variant={theme === option ? "default" : "outline"}
+								className="flex-1"
+								onPress={() => setTheme(option)}
 							>
-								{t}
-							</Text>
-						</Pressable>
-					))}
-				</View>
-			</View>
+								<Text className="capitalize">{option}</Text>
+							</Button>
+						))}
+					</View>
+				</CardContent>
+			</Card>
 
 			{/* tRPC */}
-			<View
-				className={`w-full p-4 rounded-xl border ${isDark ? "bg-neutral-800 border-neutral-700" : "bg-white border-neutral-200"}`}
-			>
-				<Text className={`text-lg font-bold mb-2 ${isDark ? "text-white" : "text-black"}`}>
-					tRPC Test
-				</Text>
-				{isLoading ? (
-					<Text className={`text-base ${isDark ? "text-white" : "text-black"}`}>
-						{t("common.loading")}
-					</Text>
-				) : isError ? (
-					<Text className="text-base text-red-500">{t("common.error")} - API not running?</Text>
-				) : (
-					<Text className={`text-base ${isDark ? "text-white" : "text-black"}`}>
-						{helloData?.message}
-					</Text>
-				)}
-			</View>
+			<Card className="w-full">
+				<CardHeader>
+					<CardTitle>tRPC Test</CardTitle>
+				</CardHeader>
+				<CardContent>
+					{isLoading ? (
+						<Text variant="muted">{t("common.loading")}</Text>
+					) : isError ? (
+						<Text className="text-destructive">{t("common.error")} - API not running?</Text>
+					) : (
+						<Text>{helloData?.message}</Text>
+					)}
+				</CardContent>
+			</Card>
 
 			{/* Auth */}
-			<View
-				className={`w-full p-4 rounded-xl border ${isDark ? "bg-neutral-800 border-neutral-700" : "bg-white border-neutral-200"}`}
-			>
-				<Text className={`text-lg font-bold mb-2 ${isDark ? "text-white" : "text-black"}`}>
-					Auth
-				</Text>
-				{session?.user ? (
-					<View className="gap-2">
-						<Text className={`text-sm ${isDark ? "text-neutral-300" : "text-neutral-600"}`}>
-							{t("auth.loggedInAs")}: {session.user.email}
-						</Text>
-						<Pressable
-							className="bg-red-500 active:opacity-70 px-4 py-2 rounded-lg mt-1"
-							onPress={() => signOut()}
-						>
-							<Text className="text-white text-sm font-semibold text-center">
-								{t("auth.logout")}
+			<Card className="w-full">
+				<CardHeader>
+					<CardTitle>Auth</CardTitle>
+				</CardHeader>
+				<CardContent className="gap-3">
+					{session?.user ? (
+						<>
+							<Text variant="muted">
+								{t("auth.loggedInAs")}: {session.user.email}
 							</Text>
-						</Pressable>
-					</View>
-				) : (
-					<Pressable
-						className="bg-blue-500 active:opacity-70 px-4 py-3 rounded-lg"
-						onPress={() => router.push("/login")}
-					>
-						<Text className="text-white text-base font-semibold text-center">
-							{t("auth.login")}
-						</Text>
-					</Pressable>
-				)}
-			</View>
+							<Button variant="destructive" onPress={() => signOut()}>
+								<Text>{t("auth.logout")}</Text>
+							</Button>
+						</>
+					) : (
+						<Button onPress={() => router.push("/login")}>
+							<Text>{t("auth.login")}</Text>
+						</Button>
+					)}
+				</CardContent>
+			</Card>
 		</View>
 	);
 }

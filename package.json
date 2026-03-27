@@ -1,6 +1,7 @@
 {
 	"name": "my-monorepo",
 	"private": true,
+	"type": "module",
 	"scripts": {
 		"dev:api": "turbo dev --filter=@my-monorepo/api",
 		"dev:web": "turbo dev --filter=@my-monorepo/web",

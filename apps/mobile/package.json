@@ -24,7 +24,9 @@
 		"@expo/log-box": "latest",
 		"@expo/metro-runtime": "latest",
 		"@my-monorepo/i18n": "workspace:*",
+		"@my-monorepo/ui-native": "workspace:*",
 		"@my-monorepo/utils": "workspace:*",
+		"@react-navigation/native": "latest",
 		"@tanstack/react-query": "latest",
 		"@trpc/client": "latest",
 		"@trpc/tanstack-react-query": "latest",
@@ -48,6 +50,8 @@
 	},
 	"devDependencies": {
 		"@my-monorepo/api": "workspace:*",
-		"tailwindcss": "^3.4.17"
+		"postcss-import": "latest",
+		"tailwindcss": "3.4.19",
+		"tailwindcss-animate": "latest"
 	}
 }
