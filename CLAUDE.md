@@ -2,16 +2,17 @@
 
 ## Project Structure & Module Organization
 - `apps/` hosts the runnable products with their frameworks:
-  - `api/`: Node.js runtime, Hono HTTP server (`@hono/node-server`), tRPC API layer (uses `@my-monorepo/ai`, `@my-monorepo/auth`, `@my-monorepo/env`, `@my-monorepo/logger`, and `@my-monorepo/utils`). Dev server via `tsx watch`.
+  - `api/`: Bun runtime, Hono HTTP server (`@hono/node-server`), tRPC API layer (uses `@my-monorepo/ai`, `@my-monorepo/auth`, `@my-monorepo/env`, `@my-monorepo/logger`, and `@my-monorepo/utils`). Dev server via `bun --watch`.
   - `web/`: React + TanStack Router/React Query/React Start, built with Vite (uses `ui`, `i18n`).
   - `tauri/`: Tauri v2 desktop app (Rust core in `apps/tauri/src-tauri`) with a React + Vite frontend (uses `ui`, `i18n`).
-  - `mobile/`: Expo (React Native) with Expo Router (uses `i18n`).
+  - `mobile/`: Expo (React Native) with Expo Router, NativeWind, and tRPC (uses `i18n`, `ui-native`, `utils`). Uses `better-auth` directly via `@better-auth/expo` instead of `@my-monorepo/auth`.
 - `packages/` contains shared libraries and their roles:
   - `tsconfig/`: shared TS configs (`base`, `hono`, `react-app`, `react-library`).
   - `utils/`: cross-app helpers for crypto/formatting/validation, plus shared libs (zod, validator, date-fns, superjson, etc.).
   - `env/`: type-safe environment variable validation using Zod.
   - `i18n/`: i18next setup, locale exports, and React hooks.
-  - `ui/`: shared UI components and styles (shadcn/ui, Radix, Tailwind, CVA utilities).
+  - `ui/`: shared web UI components and styles (shadcn/ui, Radix, Tailwind, CVA utilities).
+  - `ui-native/`: shared React Native UI components (React Native Reusables, NativeWind, CVA utilities).
   - `logger/`: pino-based logger with context helpers.
   - `db/`: Prisma client wrapper and database schema management.
   - `auth/`: authentication layer using better-auth with Prisma adapter.
