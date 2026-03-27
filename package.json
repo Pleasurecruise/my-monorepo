@@ -25,7 +25,6 @@
 		"@types/node": "latest",
 		"@types/react": "latest",
 		"@types/react-dom": "latest",
-		"@typescript/native-preview": "latest",
 		"@vitejs/plugin-react": "latest",
 		"@vitest/coverage-v8": "latest",
 		"react": "latest",
@@ -35,7 +34,7 @@
 		"typescript": "latest",
 		"vite-plus": "latest"
 	},
-	"packageManager": "pnpm@10.32.1",
+	"packageManager": "pnpm@10.33.0",
 	"simple-git-hooks": {
 		"pre-commit": "pnpm run precommit"
 	},

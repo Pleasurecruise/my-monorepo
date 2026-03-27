@@ -88,7 +88,7 @@ function App() {
 
 	const toggleLanguage = () => {
 		const current = getCurrentLanguage();
-		setLanguage(current === "en" ? "zh" : "en");
+		void setLanguage(current === "en" ? "zh" : "en");
 	};
 
 	const toggleTheme = () => {

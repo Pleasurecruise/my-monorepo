@@ -6,7 +6,7 @@
 	"scripts": {
 		"dev": "tauri dev",
 		"build": "tauri build",
-		"check-types": "tsgo --noEmit",
+		"check-types": "vp lint --type-aware --type-check",
 		"lint": "vp lint",
 		"lint:fix": "vp lint --fix",
 		"format": "vp fmt",

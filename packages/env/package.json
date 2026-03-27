@@ -9,7 +9,7 @@
 		"./client": "./src/client.ts"
 	},
 	"scripts": {
-		"check-types": "tsgo --noEmit",
+		"check-types": "vp lint --type-aware --type-check",
 		"test": "vp test --run"
 	},
 	"dependencies": {

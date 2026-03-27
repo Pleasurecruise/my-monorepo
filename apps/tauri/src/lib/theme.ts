@@ -16,7 +16,7 @@ export function applyTheme(theme: AppTheme): void {
 	// Tauri v2: pass null for "auto" so the native window follows the system
 	import("@tauri-apps/api/window")
 		.then(({ getCurrentWindow }) => {
-			getCurrentWindow().setTheme(theme === "auto" ? null : resolved);
+			return getCurrentWindow().setTheme(theme === "auto" ? null : resolved);
 		})
 		.catch(() => {});
 }

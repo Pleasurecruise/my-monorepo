@@ -18,7 +18,7 @@ export default function Home() {
 
 	const toggleLanguage = () => {
 		const current = getCurrentLanguage();
-		setLanguage(current === "en" ? "zh" : "en");
+		void setLanguage(current === "en" ? "zh" : "en");
 	};
 
 	return (

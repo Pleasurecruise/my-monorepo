@@ -10,7 +10,7 @@ const resources = {
 
 const i18n: I18n = i18next.createInstance();
 
-i18n.init({
+void i18n.init({
 	resources,
 	lng: "en",
 	fallbackLng: "en",

@@ -11,9 +11,9 @@
 	},
 	"scripts": {
 		"dev": "bun --watch --env-file ../../.env src/index.ts",
-		"build": "tsgo --project tsconfig.json --outDir dist && tsc-alias -p tsconfig.json --outDir dist",
+		"build": "tsc --project tsconfig.json --outDir dist && tsc-alias -p tsconfig.json --outDir dist",
 		"start": "bun dist/index.js",
-		"check-types": "tsgo --noEmit",
+		"check-types": "vp lint --type-aware --type-check",
 		"lint": "vp lint",
 		"lint:fix": "vp lint --fix",
 		"format": "vp fmt",

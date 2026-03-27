@@ -22,7 +22,7 @@ const trpcClient = createTRPCClient<AppRouter>({
 				const headers = new Map<string, string>();
 				headers.set("x-trpc-source", "expo-react");
 
-				const cookie = await authClient.getCookie();
+				const cookie = authClient.getCookie();
 				if (cookie) headers.set("Cookie", cookie);
 
 				return Object.fromEntries(headers);

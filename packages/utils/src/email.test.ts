@@ -24,6 +24,7 @@ describe("email", () => {
 
 	it("should handle email sending failure", async () => {
 		const transporter = nodemailer.createTransport({});
+		// oxlint-disable-next-line typescript-eslint/unbound-method
 		vi.mocked(transporter.sendMail).mockRejectedValueOnce(new Error("Failed to send"));
 
 		const result = await sendEmail({

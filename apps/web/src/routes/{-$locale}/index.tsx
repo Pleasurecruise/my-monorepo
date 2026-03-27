@@ -123,7 +123,7 @@ function Home() {
 	const toggleTheme = () => {
 		const themes = ["light", "dark", "auto"] as const;
 		const next = themes[(themes.indexOf(theme) + 1) % themes.length]!;
-		setThemeServerFn({ data: next }).then(() => router.invalidate());
+		void setThemeServerFn({ data: next }).then(() => router.invalidate());
 	};
 
 	const handleSendMessage = async () => {

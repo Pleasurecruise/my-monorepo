@@ -1,5 +1,5 @@
 import { createEnv } from "@t3-oss/env-core";
-import { publicEnvSchema, type ClientEnv } from "./schema.js";
+import { publicEnvSchema } from "./schema.js";
 
 export const env = createEnv({
 	clientPrefix: "PUBLIC_",
