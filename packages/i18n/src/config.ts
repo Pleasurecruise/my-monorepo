@@ -14,7 +14,6 @@ void i18n.init({
 	resources,
 	lng: "en",
 	fallbackLng: "en",
-	compatibilityJSON: "v4",
 	interpolation: {
 		escapeValue: false,
 	},
