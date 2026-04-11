@@ -20,11 +20,11 @@
 	},
 	"dependencies": {
 		"@my-monorepo/env": "workspace:*",
-		"@prisma/adapter-pg": "latest",
-		"@prisma/client": "latest"
+		"@prisma/adapter-pg": "7.7.0",
+		"@prisma/client": "7.7.0"
 	},
 	"devDependencies": {
 		"@my-monorepo/tsconfig": "workspace:*",
-		"prisma": "latest"
+		"prisma": "7.7.0"
 	}
 }

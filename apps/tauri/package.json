@@ -20,15 +20,15 @@
 		"@my-monorepo/i18n": "workspace:*",
 		"@my-monorepo/ui": "workspace:*",
 		"@my-monorepo/utils": "workspace:*",
-		"@tanstack/react-query": "latest",
-		"@tauri-apps/api": "latest",
-		"@tauri-apps/plugin-opener": "latest",
-		"@trpc/client": "latest",
-		"@trpc/tanstack-react-query": "latest"
+		"@tanstack/react-query": "5.99.0",
+		"@tauri-apps/api": "2.10.1",
+		"@tauri-apps/plugin-opener": "2.5.3",
+		"@trpc/client": "11.16.0",
+		"@trpc/tanstack-react-query": "11.16.0"
 	},
 	"devDependencies": {
 		"@my-monorepo/api": "workspace:*",
 		"@my-monorepo/tsconfig": "workspace:*",
-		"@tauri-apps/cli": "latest"
+		"@tauri-apps/cli": "2.10.1"
 	}
 }

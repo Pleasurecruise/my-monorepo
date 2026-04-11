@@ -17,12 +17,12 @@
 		"test": "vp test --run"
 	},
 	"dependencies": {
-		"@better-auth/prisma-adapter": "latest",
+		"@better-auth/prisma-adapter": "1.6.2",
 		"@better-fetch/fetch": "^1.1.21",
 		"@my-monorepo/db": "workspace:*",
 		"@my-monorepo/env": "workspace:*",
 		"@my-monorepo/utils": "workspace:*",
-		"better-auth": "latest"
+		"better-auth": "1.6.2"
 	},
 	"devDependencies": {
 		"@my-monorepo/tsconfig": "workspace:*"

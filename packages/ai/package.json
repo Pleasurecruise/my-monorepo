@@ -16,10 +16,10 @@
 		"test:coverage": "vp test --run --coverage"
 	},
 	"dependencies": {
-		"@ai-sdk/openai-compatible": "latest",
+		"@ai-sdk/openai-compatible": "2.0.41",
 		"@my-monorepo/env": "workspace:*",
 		"@my-monorepo/utils": "workspace:*",
-		"ai": "latest"
+		"ai": "6.0.158"
 	},
 	"devDependencies": {
 		"@my-monorepo/tsconfig": "workspace:*"

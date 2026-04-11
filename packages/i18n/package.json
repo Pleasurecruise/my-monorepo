@@ -19,7 +19,7 @@
 		"test:coverage": "vp test --run --coverage"
 	},
 	"dependencies": {
-		"i18next": "latest"
+		"i18next": "26.0.4"
 	},
 	"devDependencies": {
 		"@my-monorepo/tsconfig": "workspace:*"
