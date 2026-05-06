@@ -1,56 +1,59 @@
 {
-	"name": "my-monorepo",
-	"private": true,
-	"type": "module",
-	"scripts": {
-		"dev:api": "turbo dev --filter=@my-monorepo/api",
-		"dev:web": "turbo dev --filter=@my-monorepo/web",
-		"dev:tauri": "turbo dev --filter=@my-monorepo/tauri",
-		"dev:expo": "turbo dev --filter=@my-monorepo/mobile",
-		"build:ui": "turbo build --filter=@my-monorepo/ui",
-		"build:web": "turbo build --filter=@my-monorepo/web",
-		"build:tauri": "turbo build --filter=@my-monorepo/tauri",
-		"lint": "turbo lint && manypkg check",
-		"lint:fix": "turbo lint:fix",
-		"format": "turbo format",
-		"format:check": "turbo format -- --check",
-		"check-types": "turbo check-types",
-		"test": "turbo test",
-		"test:coverage": "turbo test:coverage",
-		"precommit": "pnpm run format:check && pnpm run lint && pnpm run check-types && pnpm run test",
-		"precommit:fix": "pnpm run format && pnpm run lint:fix"
-	},
-	"devDependencies": {
-		"@manypkg/cli": "0.25.1",
-		"@tailwindcss/vite": "4.2.2",
-		"@types/node": "25.6.0",
-		"@types/react": "19.2.14",
-		"@types/react-dom": "19.2.3",
-		"@vitejs/plugin-react": "6.0.1",
-		"@vitest/coverage-v8": "4.1.4",
-		"react": "19.2.5",
-		"react-dom": "19.2.5",
-		"simple-git-hooks": "2.13.1",
-		"turbo": "2.9.6",
-		"typescript": "6.0.2",
-		"vite-plus": "0.1.16"
-	},
-	"packageManager": "pnpm@10.33.0",
-	"simple-git-hooks": {
-		"pre-commit": "pnpm run precommit"
-	},
-	"manypkg": {
-		"ignoredRules": ["EXTERNAL_MISMATCH"]
-	},
-	"pnpm": {
-		"onlyBuiltDependencies": [
-			"@prisma/engines",
-			"esbuild",
-			"prisma"
-		],
-		"overrides": {
-			"@hono/node-server@<1.19.13": ">=1.19.13",
-			"vite@>=8.0.0 <8.0.5": "8.0.8"
-		}
-	}
+  "name": "my-monorepo",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev:api": "turbo dev --filter=@my-monorepo/api",
+    "dev:web": "turbo dev --filter=@my-monorepo/web",
+    "dev:tauri": "turbo dev --filter=@my-monorepo/tauri",
+    "dev:expo": "turbo dev --filter=@my-monorepo/mobile",
+    "build:ui": "turbo build --filter=@my-monorepo/ui",
+    "build:web": "turbo build --filter=@my-monorepo/web",
+    "build:tauri": "turbo build --filter=@my-monorepo/tauri",
+    "lint": "turbo lint && manypkg check",
+    "lint:fix": "turbo lint:fix",
+    "format": "turbo format",
+    "format:check": "turbo format -- --check",
+    "check": "turbo check && manypkg check",
+    "test": "turbo test",
+    "test:coverage": "turbo test:coverage",
+    "precommit": "pnpm run check && pnpm run test",
+    "precommit:fix": "pnpm run format && pnpm run lint:fix && manypkg fix"
+  },
+  "devDependencies": {
+    "@manypkg/cli": "0.25.1",
+    "@tailwindcss/vite": "4.2.4",
+    "@types/node": "25.6.0",
+    "@types/react": "19.2.14",
+    "@types/react-dom": "19.2.3",
+    "@typescript/native-preview": "beta",
+    "@vitejs/plugin-react": "6.0.1",
+    "@vitest/coverage-v8": "4.1.5",
+    "react": "19.2.5",
+    "react-dom": "19.2.5",
+    "simple-git-hooks": "2.13.1",
+    "turbo": "2.9.9",
+    "typescript": "6.0.3",
+    "vite-plus": "0.1.20"
+  },
+  "packageManager": "pnpm@10.33.0",
+  "simple-git-hooks": {
+    "pre-commit": "pnpm run precommit"
+  },
+  "manypkg": {
+    "ignoredRules": [
+      "EXTERNAL_MISMATCH"
+    ]
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "@prisma/engines",
+      "esbuild",
+      "prisma"
+    ],
+    "overrides": {
+      "vite@>=8.0.0 <8.0.5": "8.0.8",
+      "@hono/node-server@<2.0.1": ">=2.0.1"
+    }
+  }
 }

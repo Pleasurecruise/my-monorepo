@@ -13,16 +13,16 @@
 		"lint:fix": "vp lint --fix",
 		"format": "vp fmt",
 		"format:check": "vp fmt --check",
-		"check-types": "vp lint --type-aware --type-check",
+		"check": "vp check && tsgo --noEmit",
 		"test": "vp test --run"
 	},
 	"dependencies": {
-		"@better-auth/prisma-adapter": "1.6.2",
+		"@better-auth/prisma-adapter": "1.6.9",
 		"@better-fetch/fetch": "^1.1.21",
 		"@my-monorepo/db": "workspace:*",
 		"@my-monorepo/env": "workspace:*",
 		"@my-monorepo/utils": "workspace:*",
-		"better-auth": "1.6.2"
+		"better-auth": "1.6.9"
 	},
 	"devDependencies": {
 		"@my-monorepo/tsconfig": "workspace:*"

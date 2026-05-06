@@ -6,7 +6,7 @@
 	"scripts": {
 		"dev": "tauri dev",
 		"build": "tauri build",
-		"check-types": "vp lint --type-aware --type-check",
+		"check": "vp check && tsgo --noEmit",
 		"lint": "vp lint",
 		"lint:fix": "vp lint --fix",
 		"format": "vp fmt",
@@ -20,15 +20,15 @@
 		"@my-monorepo/i18n": "workspace:*",
 		"@my-monorepo/ui": "workspace:*",
 		"@my-monorepo/utils": "workspace:*",
-		"@tanstack/react-query": "5.99.0",
-		"@tauri-apps/api": "2.10.1",
-		"@tauri-apps/plugin-opener": "2.5.3",
-		"@trpc/client": "11.16.0",
-		"@trpc/tanstack-react-query": "11.16.0"
+		"@tanstack/react-query": "5.100.9",
+		"@tauri-apps/api": "2.11.0",
+		"@tauri-apps/plugin-opener": "2.5.4",
+		"@trpc/client": "11.17.0",
+		"@trpc/tanstack-react-query": "11.17.0"
 	},
 	"devDependencies": {
 		"@my-monorepo/api": "workspace:*",
 		"@my-monorepo/tsconfig": "workspace:*",
-		"@tauri-apps/cli": "2.10.1"
+		"@tauri-apps/cli": "2.11.1"
 	}
 }

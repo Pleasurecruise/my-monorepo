@@ -2,7 +2,7 @@ import { isAiConfigured, streamChat, type ModelMessage } from "@my-monorepo/ai";
 import { createLoggerWithContext } from "@my-monorepo/logger";
 import { z } from "@my-monorepo/utils";
 import { TRPCError } from "@trpc/server";
-import { createTRPCRouter, publicProcedure } from "@/trpc/init";
+import { createTRPCRouter, publicProcedure } from "../init";
 
 type MessageStatus = "streaming" | "done" | "error";
 

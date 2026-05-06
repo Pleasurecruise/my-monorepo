@@ -11,15 +11,15 @@
 		"lint:fix": "vp lint --fix",
 		"format": "vp fmt",
 		"format:check": "vp fmt --check",
-		"check-types": "vp lint --type-aware --type-check",
+		"check": "vp check && tsgo --noEmit",
 		"test": "vp test --run",
 		"test:coverage": "vp test --run --coverage"
 	},
 	"dependencies": {
-		"@ai-sdk/openai-compatible": "2.0.41",
+		"@ai-sdk/openai-compatible": "3.0.0-beta.36",
 		"@my-monorepo/env": "workspace:*",
 		"@my-monorepo/utils": "workspace:*",
-		"ai": "6.0.158"
+		"ai": "7.0.0-beta.116"
 	},
 	"devDependencies": {
 		"@my-monorepo/tsconfig": "workspace:*"

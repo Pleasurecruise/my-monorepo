@@ -13,7 +13,7 @@
 		"lint:fix": "vp lint --fix",
 		"format": "vp fmt",
 		"format:check": "vp fmt --check",
-		"check-types": "vp lint --type-aware --type-check",
+		"check": "vp check && tsgo --noEmit",
 		"test": "vp test --run",
 		"test:coverage": "vp test --run --coverage"
 	},
@@ -21,11 +21,11 @@
 		"@radix-ui/react-slot": "1.2.4",
 		"class-variance-authority": "0.7.1",
 		"clsx": "2.1.1",
-		"lucide-react": "1.8.0",
+		"lucide-react": "1.14.0",
 		"tailwind-merge": "3.5.0"
 	},
 	"devDependencies": {
 		"@my-monorepo/tsconfig": "workspace:*",
-		"tailwindcss": "4.2.2"
+		"tailwindcss": "4.2.4"
 	}
 }

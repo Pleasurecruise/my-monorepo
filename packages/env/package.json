@@ -9,12 +9,12 @@
 		"./client": "./src/client.ts"
 	},
 	"scripts": {
-		"check-types": "vp lint --type-aware --type-check",
+		"check": "vp check && tsgo --noEmit",
 		"test": "vp test --run"
 	},
 	"dependencies": {
 		"@t3-oss/env-core": "0.13.11",
-		"zod": "4.3.6"
+		"zod": "4.4.3"
 	},
 	"devDependencies": {
 		"@my-monorepo/tsconfig": "workspace:*"

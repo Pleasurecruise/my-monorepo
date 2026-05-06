@@ -16,7 +16,7 @@
 		"lint:fix": "vp lint --fix",
 		"format": "vp fmt",
 		"format:check": "vp fmt --check",
-		"check-types": "vp lint --type-aware --type-check",
+		"check": "vp check && tsgo --noEmit",
 		"test": "vp test --run",
 		"test:coverage": "vp test --run --coverage"
 	},
@@ -24,13 +24,13 @@
 		"@my-monorepo/env": "workspace:*",
 		"@my-monorepo/logger": "workspace:*",
 		"date-fns": "4.1.0",
-		"jose": "6.2.2",
+		"jose": "6.2.3",
 		"lodash": "4.18.1",
-		"nodemailer": "8.0.5",
+		"nodemailer": "8.0.7",
 		"nuqs": "2.8.9",
 		"superjson": "2.2.6",
 		"validator": "13.15.35",
-		"zod": "4.3.6"
+		"zod": "4.4.3"
 	},
 	"devDependencies": {
 		"@my-monorepo/tsconfig": "workspace:*",
